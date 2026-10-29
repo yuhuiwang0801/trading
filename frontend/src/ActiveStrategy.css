@@ -1,0 +1,45 @@
+.active-strategy{margin-bottom:24px}
+.active-strategy .panel-heading>div>p{font-size:15px;margin-top:9px;color:var(--text)}
+.strategy-v2-rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strategy-v2-rules>div{padding:22px 24px}
+.strategy-v2-rules>div+div{border-left:1px solid var(--line)}
+.strategy-v2-rules>div>span{font-size:11px;color:var(--accent);font-family:monospace}
+.strategy-v2-rules h3{font-size:14px;margin:10px 0}
+.strategy-v2-rules p{font-size:12px;color:var(--muted);line-height:1.9;margin:0}
+.strategy-risk-strip{display:flex;gap:10px;align-items:center;padding:18px 24px 0;font-size:12px;line-height:1.8}
+.strategy-risk-strip svg{flex-shrink:0;color:var(--accent)}
+.strategy-note{font-size:12px;color:var(--muted);line-height:1.85;padding:0 24px;margin:14px 0 20px}
+.strategy-runtime{border-top:1px solid var(--line);padding:20px 24px}
+.strategy-runtime-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.strategy-runtime-heading strong{display:flex;align-items:center;gap:8px;font-size:13px}
+.strategy-runtime-heading>.text-button{margin-left:auto}
+.strategy-runtime-dates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 0}
+.strategy-runtime-dates dt{font-size:11px;color:var(--muted);margin-bottom:7px}
+.strategy-runtime-dates dd{font-size:13px;font-variant-numeric:tabular-nums;margin:0}
+.strategy-runtime .strategy-note{padding:0;margin:16px 0 0}
+.strategy-blockers{font-size:12px;line-height:1.8;color:var(--amber,#99621b);padding-left:18px;margin:16px 0 0;overflow-wrap:anywhere}
+.active-strategy .panel-heading{flex-wrap:wrap}
+.strategy-selected-inline{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 20px;padding:14px 16px;background:var(--surface-alt,#f7f8fa);border:1px solid var(--line);border-radius:9px;font-size:13px}
+.strategy-selected-inline>div{display:flex;flex-direction:column;gap:6px}
+.live-strategy-select{display:flex;flex-direction:column;gap:8px;min-width:0;flex:1}
+.live-strategy-select select{width:100%;max-width:420px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);padding:9px 10px;font-size:13px}
+.live-policy-summary{text-align:left;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:17px 18px}
+.live-policy-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px;font-size:13px}
+.live-policy-title>span{color:var(--muted);font-size:11px}
+.live-policy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 20px;margin:0}
+.live-policy-grid>div{min-width:0}
+.live-policy-grid dt{font-size:11px;line-height:1.5;color:var(--muted);margin-bottom:5px}
+.live-policy-grid dd{font-size:13px;line-height:1.6;font-weight:500;margin:0;overflow-wrap:anywhere}
+.live-policy-amounts{margin:16px 0 12px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+.live-policy-amounts>div{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}
+.live-policy-amounts span{color:var(--muted)}
+.live-policy-amounts strong{font-weight:500}
+.live-policy-summary .live-control-note{font-size:12px;line-height:1.7;color:var(--muted);margin:13px 0 0}
+.live-entry-feasibility{margin-top:14px;padding:12px 14px;border-left:3px solid var(--accent);border-radius:4px;background:var(--subtle);text-align:left}
+.live-entry-feasibility p{font-size:12px;line-height:1.75;margin:0 0 7px;color:var(--ink)}
+.live-entry-feasibility small{font-size:11px;line-height:1.6;color:var(--muted)}
+.live-policy-symbols{margin-top:12px;font-size:11px;color:var(--muted)}
+@media(max-width:480px){.live-policy-grid{grid-template-columns:1fr;gap:12px}.live-policy-summary{padding:14px}.strategy-selected-inline{flex-wrap:wrap}.live-strategy-select select{max-width:none}}
+.strategy-selected-inline span{color:var(--muted);font-size:11px}
+@media(max-width:1050px){.strategy-v2-rules{grid-template-columns:1fr}.strategy-v2-rules>div+div{border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:600px){.strategy-v2-rules>div{padding:18px 16px}.strategy-risk-strip{padding:16px 16px 0}.strategy-note{padding:0 16px}.strategy-runtime{padding:18px 16px}.strategy-runtime-dates{gap:10px}.strategy-runtime-heading>.text-button{margin-left:0}.strategy-selected-inline{align-items:flex-start}}

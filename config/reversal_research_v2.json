@@ -1,0 +1,71 @@
+{
+  "strategy_version": "industry_reversal_fundamental_rebound_v2",
+  "mode": "research_only",
+  "live_order_writes_enabled": false,
+  "primary_experiment": "V2",
+  "experiments": {
+    "B0": "Corrected-universe original E01; fixed 5-session exit",
+    "X1": "Original E01 entries; rebound, risk and maximum-duration exits",
+    "F1": "Fundamental and minimum-dislocation entry filters; fixed 5-session exit",
+    "V2": "Filtered entries plus rebound, risk and maximum-duration exits"
+  },
+  "formation_sessions": 5,
+  "holding_sessions": 5,
+  "universe_size": 500,
+  "min_history_sessions": 252,
+  "liquidity_sessions": 60,
+  "min_raw_price": 5,
+  "min_other_peers": 5,
+  "candidate_fraction": 0.1,
+  "initial_cash": 100000,
+  "primary_cost_bps": 10,
+  "sensitivity_cost_bps": [5, 20],
+  "max_positions": 20,
+  "max_entries_per_day": 4,
+  "max_security_weight": 0.05,
+  "max_issuer_weight": 0.05,
+  "max_industry_weight": 0.25,
+  "max_daily_buy_weight": 0.20,
+  "cash_return": 0,
+  "entry_filters": {
+    "require_negative_stock_return": true,
+    "minimum_relative_log_gap": 0.02,
+    "minimum_revenue_yoy": -0.05,
+    "minimum_net_income_yoy": -0.20,
+    "require_positive_net_income": true,
+    "earnings_cooldown_sessions": 5,
+    "risk_event_cooldown_sessions": 20,
+    "unknown_policy": "skip_new_entries",
+    "quarterly_max_period_age_calendar_days": 200,
+    "annual_max_period_age_calendar_days": 460
+  },
+  "dynamic_exit": {
+    "exit_mode": "rebound",
+    "rebound_fraction": 0.8,
+    "max_hold_sessions": 10,
+    "relative_stop_multiple": 1.0,
+    "absolute_stop_loss": 0.05
+  },
+  "execution": {
+    "price_model": "next_session_daily_open_proxy",
+    "signal_phase": "after_close",
+    "rebound_anchor": "frozen_signal_day_gap; accumulate subsequent daily stock-minus-peer log returns",
+    "overnight_target_crossing": "no intraday/open target cancellation; first exit assessment after entry-day close",
+    "stop_loss_is_guaranteed": false
+  },
+  "periods": {
+    "development_retest": ["2017-01-01", "2020-12-31"],
+    "validation_retest": ["2021-01-01", "2023-12-31"],
+    "recent_retest": ["2024-01-01", "2026-10-26"]
+  },
+  "research_protocol": {
+    "all_intervals_previously_viewed": true,
+    "confirmatory": false,
+    "allow_parameter_search": false,
+    "primary_preselected": true,
+    "each_period_starts_from_cash": true,
+    "paired_comparisons_use_same_identity_quarantine": true,
+    "interpretation": "Historical exploratory retest of a new fixed hypothesis; never a new holdout. Do not retune after observing results."
+  },
+  "bootstrap": {"repetitions": 2000, "block_sessions": [10, 20, 60], "seed": 20261027}
+}

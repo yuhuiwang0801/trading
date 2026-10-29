@@ -1,0 +1,3125 @@
+{
+  "created_at": "2026-10-27T10:50:57.675982+00:00",
+  "review_version": "reversal_v2_identity_review_1",
+  "source_snapshot": "/Users/wangyuhui/Desktop/trading/data/reversal/alpaca_sip_20261027_proxy200_v2",
+  "source_master_sha256": "2a5abef7a6240424428ad2896775d600eadb0af0814fafda6d48bec9b1dd4ec9",
+  "source_v1_quarantine_sha256": "d8e7410290a4a8fcc11a358f9932462cdb63e25946a8a5b60a28e0723da8950e",
+  "status": "targeted_correction_complete_not_full_historical_identity_certification",
+  "outcome_independence": {
+    "v1_performance_previously_known": true,
+    "v2_strategy_returns_inspected_for_exclusions": false,
+    "exclusion_basis": "official security type, issuer identity and listing history only; no return ranking or loss avoidance"
+  },
+  "application_rule": "Union these exclusions with the frozen v1 quarantine before generating scores, peer returns, liquidity pools and trades. Apply the exact same corrected pool to v1 baseline, filter-only, exit-only and combined v2. Never rewrite the frozen v1 artifact or describe its 194 names as verified ordinary equities.",
+  "excluded_symbols": [
+    "EXE",
+    "DOW",
+    "TEVA",
+    "BNY",
+    "B",
+    "COR",
+    "TSM",
+    "AZN",
+    "APC",
+    "FOXA"
+  ],
+  "excluded_security_ids": [
+    "ae7b5317-8b41-41df-b7f8-22c4de74b832",
+    "d59870fe-9add-43f2-960c-b2ec4f29d8d3",
+    "4f516d72-e605-465b-a4a3-e665c1fe470c",
+    "64d27c2a-18a1-4848-b205-73b5d428d5f9",
+    "aef25bf7-87b7-483b-816c-aa76834b96dd",
+    "ca56f277-6345-49e3-889a-6a748a4f1c79",
+    "626ce11f-1e10-488b-8d75-a3eff18d6d0f",
+    "7b60bc3b-8715-4e23-a5df-19642434f7a7",
+    "492d6f8c-7dbc-44b2-8927-d684d56650cc",
+    "21b45a5d-50c2-46be-bbae-02f5f23f7453"
+  ],
+  "newly_excluded_symbols": [
+    "TSM",
+    "AZN",
+    "APC",
+    "FOXA"
+  ],
+  "quarantined": [
+    {
+      "symbol": "EXE",
+      "security_id": "ae7b5317-8b41-41df-b7f8-22c4de74b832",
+      "issuer_id": "0000895126",
+      "status": "quarantine",
+      "reason_code": "cancelled_equity_spliced_to_new_equity",
+      "reason": "Provider current-symbol history includes legacy Chesapeake equity through 2020 and post-bankruptcy new equity. Company confirms legacy common/preferred equity interests cancelled 2021-02-09. Current Alpaca asset UUID is not a validated permanent identity across that cancellation. No verified old-to-new shareholder entitlement mapping; therefore current-symbol series cannot be treated as one investable share.",
+      "observed_zero_volume_segment": {
+        "start": "2020-06-29",
+        "end": "2021-02-09",
+        "sessions": 156
+      },
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://investors.expandenergy.com/node/6461/pdf"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://investors.expandenergy.com/node/6461/pdf"
+      ]
+    },
+    {
+      "symbol": "DOW",
+      "security_id": "d59870fe-9add-43f2-960c-b2ec4f29d8d3",
+      "issuer_id": "0001751788",
+      "status": "quarantine",
+      "reason_code": "reused_symbol_unverified_spinoff_identity",
+      "reason": "Current Dow Inc. began separate trading on 2019-04-02 following DowDuPont distribution. The 2016 selection query returns legacy DOW records while the full history request for current DOW yields no rows; there is no validated permanent-security bridge.",
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://investors.dow.com/en/news/news-details/2019/Dow-completes-separation-from-DowDuPont/default.aspx"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://investors.dow.com/en/news/news-details/2019/Dow-completes-separation-from-DowDuPont/default.aspx"
+      ]
+    },
+    {
+      "symbol": "TEVA",
+      "security_id": "4f516d72-e605-465b-a4a3-e665c1fe470c",
+      "issuer_id": "0000818686",
+      "status": "quarantine",
+      "reason_code": "historical_ADS_not_common_stock_scope",
+      "reason": "Company confirms NYSE listing converted from ADS to ordinary shares on 2026-09-14. The 2016 selection data refer to ADS excluded by the protocol; current ordinary history has only 31 sessions and cannot satisfy 252-session warmup.",
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://ir.tevapharm.com/news-and-events/press-releases/press-release-details/2026/Teva-Begins-Trading-Ordinary-Shares-Directly-on-the-NYSE-Marking-a-Milestone-in-its-Pivot-to-Growth-Strategy/default.aspx"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://ir.tevapharm.com/news-and-events/press-releases/press-release-details/2026/Teva-Begins-Trading-Ordinary-Shares-Directly-on-the-NYSE-Marking-a-Milestone-in-its-Pivot-to-Growth-Strategy/default.aspx"
+      ]
+    },
+    {
+      "symbol": "BNY",
+      "security_id": "64d27c2a-18a1-4848-b205-73b5d428d5f9",
+      "issuer_id": "0001390777",
+      "status": "quarantine",
+      "reason_code": "reused_symbol_action_identity_collision",
+      "reason": "Bank of New York Mellon changed BK to BNY effective 2026-05-21. Earlier BNY denoted a BlackRock municipal-bond fund; requested corporate actions contain monthly fund distributions inconsistent with the bank share history. Historical action/adjustment identity cannot yet be reconciled.",
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-announces-planned-change-of-stock-ticker-symbol-to-bny-130465.html",
+        "https://www.blackrock.com/us/individual/literature/fact-sheet/bny-new-york-municipal-income-trust-factsheet-us09248l1061-us-en-individual.pdf"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://www.bny.com/corporate/global/en/about-us/newsroom/press-release/bny-announces-planned-change-of-stock-ticker-symbol-to-bny-130465.html",
+        "https://www.blackrock.com/us/individual/literature/fact-sheet/bny-new-york-municipal-income-trust-factsheet-us09248l1061-us-en-individual.pdf"
+      ]
+    },
+    {
+      "symbol": "B",
+      "security_id": "aef25bf7-87b7-483b-816c-aa76834b96dd",
+      "issuer_id": "0000756894",
+      "status": "quarantine",
+      "reason_code": "reused_symbol_action_identity_collision",
+      "reason": "Barrick changed GOLD to B on 2025-05-09. Earlier B was Barnes Group, acquired and delisted 2025-01-27. Corporate actions returned under current B contain recurring pre-2025 payouts incompatible with Barrick adjusted-price factors; historical action identity is unresolved.",
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://www.barrick.com/English/news/news-details/2025/barrick-Is-now-B-on-the-NYSE/default.aspx",
+        "https://www.sec.gov/Archives/edgar/data/9984/000114036125001965/ef20042046_ex99-1.htm"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://www.barrick.com/English/news/news-details/2025/barrick-Is-now-B-on-the-NYSE/default.aspx",
+        "https://www.sec.gov/Archives/edgar/data/9984/000114036125001965/ef20042046_ex99-1.htm"
+      ]
+    },
+    {
+      "symbol": "COR",
+      "security_id": "ca56f277-6345-49e3-889a-6a748a4f1c79",
+      "issuer_id": "0001140859",
+      "status": "quarantine",
+      "reason_code": "reused_symbol_action_identity_collision",
+      "reason": "Cencora changed ABC to COR on 2023-08-30. Earlier COR was CoreSite, acquired 2021-12-28. Corporate actions returned under current COR contain recurring old-symbol payouts incompatible with Cencora factors; historical action identity is unresolved.",
+      "effective_for_research": "entire_snapshot_before_any_performance_evaluation",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1140859/000110465923096698/tm2324358d1_8k.htm",
+        "https://americantower.gcs-web.com/news-releases/news-release-details/american-tower-completes-acquisition-coresite-realty-corporation"
+      ],
+      "review_origin": "retained_frozen_v1_quality_exclusion",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1140859/000110465923096698/tm2324358d1_8k.htm",
+        "https://americantower.gcs-web.com/news-releases/news-release-details/american-tower-completes-acquisition-coresite-realty-corporation"
+      ]
+    },
+    {
+      "symbol": "TSM",
+      "security_id": "626ce11f-1e10-488b-8d75-a3eff18d6d0f",
+      "issuer_id": "0001046179",
+      "status": "quarantine",
+      "reason_code": "historical_and_current_ADS_excluded_by_protocol",
+      "reason": "NYSE TSM represents American Depositary Shares of Taiwan Semiconductor Manufacturing Company; the issuer distinguishes these from Taiwan-listed ordinary shares. All historical TSM bars are outside the ordinary-share-only protocol.",
+      "evidenceURLs": [
+        "https://investor.cld.tsmc.com/english/fundamentals",
+        "https://investor.tsmc.com/english/faq"
+      ],
+      "sources": [
+        "https://investor.cld.tsmc.com/english/fundamentals",
+        "https://investor.tsmc.com/english/faq"
+      ],
+      "review_origin": "v2_independent_identity_review",
+      "effective_for_research": "entire_snapshot_for_all_v2_comparators"
+    },
+    {
+      "symbol": "AZN",
+      "security_id": "7b60bc3b-8715-4e23-a5df-19642434f7a7",
+      "issuer_id": "0000901832",
+      "status": "quarantine",
+      "reason_code": "historical_ADS_to_ordinary_conversion",
+      "reason": "AstraZeneca Nasdaq ADSs ceased listing on 2026-01-30; ordinary shares began direct NYSE trading on 2026-02-02. The 2016 selection and most history are ADSs. The new ordinary listing has fewer than 252 sessions by 2026-10-26; quarantine the whole current-symbol history instead of inheriting excluded ADS history.",
+      "evidenceURLs": [
+        "https://www.astrazeneca.com/media-centre/press-releases/2026/astrazeneca-to-complete-direct-listing-on-NYSE.html",
+        "https://www.astrazeneca.com/investor-relations/shareholder-information.html"
+      ],
+      "sources": [
+        "https://www.astrazeneca.com/media-centre/press-releases/2026/astrazeneca-to-complete-direct-listing-on-NYSE.html",
+        "https://www.astrazeneca.com/investor-relations/shareholder-information.html"
+      ],
+      "review_origin": "v2_independent_identity_review",
+      "effective_for_research": "entire_snapshot_for_all_v2_comparators"
+    },
+    {
+      "symbol": "APC",
+      "security_id": "492d6f8c-7dbc-44b2-8927-d684d56650cc",
+      "issuer_id": "0002080921",
+      "status": "quarantine",
+      "reason_code": "reused_ticker_unrelated_issuer_splice",
+      "reason": "The master identifies ARKO Petroleum Corp., CIK 2080921, whose common shares first traded on 2026-02-12. Snapshot APC contains 906 bars from 2016-01-04 through 2019-08-08 that belong to Anadarko Petroleum (acquired by Occidental), followed by ARKO IPO bars in 2026. These companies do not form a continuous shareholder security; inheriting earlier history also bypasses the 252-session requirement.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/2080921/000119312526337980/apc-20260630.htm",
+        "https://www.sec.gov/Archives/edgar/data/797468/000095015719000864/ex99-1.htm",
+        "https://www.arkopetroleum.com/sec-filings/all-sec-filings/content/0001193125-26-049767/d928360d424b4.htm"
+      ],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/2080921/000119312526337980/apc-20260630.htm",
+        "https://www.sec.gov/Archives/edgar/data/797468/000095015719000864/ex99-1.htm",
+        "https://www.arkopetroleum.com/sec-filings/all-sec-filings/content/0001193125-26-049767/d928360d424b4.htm"
+      ],
+      "review_origin": "v2_independent_identity_review",
+      "effective_for_research": "entire_snapshot_for_all_v2_comparators"
+    },
+    {
+      "symbol": "FOXA",
+      "security_id": "21b45a5d-50c2-46be-bbae-02f5f23f7453",
+      "issuer_id": "0001754301",
+      "status": "quarantine",
+      "reason_code": "explicit_exchange_symbol_reuse_wrong_history_chain",
+      "reason": "Nasdaq explicitly identifies 2019-03-19 FOXA as ticker reuse. Old Twenty-First Century Fox FOXA history should continue as TFCFA; newly issued Fox Corporation FOXAV should continue as FOXA. The snapshot instead labels 2016 onward old and new shares under one current asset UUID and CIK, including the unbridged 2019-03-18 close 51.36 to 2019-03-19 close 40.34. Current Fox did not exist as a separately traded share in the 2016 liquidity selection. Whole-history quarantine preserves the fixed-sample procedure until separate permanent-security/action mapping exists.",
+      "evidenceURLs": [
+        "https://www.nasdaqtrader.com/TraderNews.aspx?id=dtn2019-05",
+        "https://nasdaqtrader.com/TraderNews.aspx?id=ECA2019-26",
+        "https://investor.foxcorporation.com/establishment-of-fox/"
+      ],
+      "sources": [
+        "https://www.nasdaqtrader.com/TraderNews.aspx?id=dtn2019-05",
+        "https://nasdaqtrader.com/TraderNews.aspx?id=ECA2019-26",
+        "https://investor.foxcorporation.com/establishment-of-fox/"
+      ],
+      "review_origin": "v2_independent_identity_review",
+      "effective_for_research": "entire_snapshot_for_all_v2_comparators"
+    }
+  ],
+  "reviewcoverage": {
+    "selected_master_count": 200,
+    "previously_accepted_count": 194,
+    "current_master_and_cached_SEC_metadata_screened_count": 200,
+    "sec_metadata_present_count": 200,
+    "frozen_exclusions_retained": 6,
+    "additional_exclusions": 4,
+    "corrected_accepted_count": 190,
+    "targeted_foreign_ordinary_retention_checks": 10,
+    "all_retained_histories_independently_certified": false,
+    "foreign_20F_40F_corpus_screen": "All 200 cached SEC filing form inventories scanned. TSM/AZN/TEVA excluded; NXPI ordinary shares explicitly verified; Barrick already quarantined. Foreign domicile and 20-F/40-F alone were not treated as ADR."
+  },
+  "per_security_screen": [
+    {
+      "symbol": "AAPL",
+      "security_id": "b0b6dd9d-8b9b-48a9-ba46-b9d54906e415",
+      "issuer_id": "0000320193",
+      "master_name": "Apple Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Apple Inc.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 33
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AMZN",
+      "security_id": "f801f835-bfe6-4a9d-a6b1-ccbb84bfd75f",
+      "issuer_id": "0001018724",
+      "master_name": "Amazon.com, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMAZON COM INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "META",
+      "security_id": "fc6a5dcd-4a70-4b8d-b64f-d83a6dae9ba4",
+      "issuer_id": "0001326801",
+      "master_name": "Meta Platforms, Inc. Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Meta Platforms, Inc.",
+      "sec_forms": {
+        "10-K": 2,
+        "10-Q": 8
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BAC",
+      "security_id": "061588a3-d70b-4b9c-a3f6-636aaa16acc4",
+      "issuer_id": "0000070858",
+      "master_name": "Bank of America Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BANK OF AMERICA CORP /DE/",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MSFT",
+      "security_id": "b6d1aa75-5c9c-4353-a305-9e2caa1925ab",
+      "issuer_id": "0000789019",
+      "master_name": "Microsoft Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MICROSOFT CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GOOGL",
+      "security_id": "69b15845-7c63-4586-b274-1cfdfe9df3d8",
+      "issuer_id": "0001652044",
+      "master_name": "Alphabet Inc. Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Alphabet Inc.",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 10
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GOOG",
+      "security_id": "f30d734c-2806-4d0d-b145-f9fade61432b",
+      "issuer_id": "0001652044",
+      "master_name": "Alphabet Inc. Class C Capital Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Alphabet Inc.",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 10
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "JPM",
+      "security_id": "e3047683-637a-4fb2-b71d-805cd6fec95d",
+      "issuer_id": "0000019617",
+      "master_name": "JPMorgan Chase & Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "JPMORGAN CHASE & CO",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "WFC",
+      "security_id": "f9700a20-b0fe-4516-87c5-9d7b096d5539",
+      "issuer_id": "0000072971",
+      "master_name": "Wells Fargo & Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "WELLS FARGO & COMPANY/MN",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "C",
+      "security_id": "36c8d04d-be51-476c-9382-0b6ea3bf1a26",
+      "issuer_id": "0000831001",
+      "master_name": "Citigroup Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CITIGROUP INC",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NVDA",
+      "security_id": "4ce9353c-66d1-46c2-898f-fce867ab0247",
+      "issuer_id": "0001045810",
+      "master_name": "NVIDIA Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NVIDIA CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "T",
+      "security_id": "2d6ed211-6d9b-46d9-b9d5-d3f8b453fd9a",
+      "issuer_id": "0000732717",
+      "master_name": "AT&T Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AT&T INC.",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 14
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "V",
+      "security_id": "4f5baf1e-0e9b-4d85-b88a-d874dc4a3c42",
+      "issuer_id": "0001403161",
+      "master_name": "VISA Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "VISA INC.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "XOM",
+      "security_id": "0dd35bf7-a49c-4068-bce0-8e40b700454d",
+      "issuer_id": "0002115436",
+      "master_name": "ExxonMobil Holdings Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ExxonMobil Holdings Corp",
+      "sec_forms": {
+        "10-Q": 1
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NFLX",
+      "security_id": "bb2a26c0-4c77-4801-8afc-82e8142ac7b8",
+      "issuer_id": "0001065280",
+      "master_name": "Netflix, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NETFLIX INC",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 11
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TSLA",
+      "security_id": "8ccae427-5dd0-45b3-b5fe-7ba5e422c766",
+      "issuer_id": "0001318605",
+      "master_name": "Tesla, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Tesla, Inc.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PG",
+      "security_id": "f81a406b-a53c-4ea5-ab05-6fb92bfc6bd7",
+      "issuer_id": "0000080424",
+      "master_name": "Procter & Gamble Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PROCTER & GAMBLE Co",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 13
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CVX",
+      "security_id": "186997ab-b63c-439b-bf62-72275d1c4c27",
+      "issuer_id": "0000093410",
+      "master_name": "Chevron Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CHEVRON CORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PFE",
+      "security_id": "b0940983-b0c6-42f1-97d5-b1b580e4431b",
+      "issuer_id": "0000078003",
+      "master_name": "Pfizer Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PFIZER INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DIS",
+      "security_id": "2f34c0b3-a4aa-4959-b52c-3c41b2c246c4",
+      "issuer_id": "0001744489",
+      "master_name": "The Walt Disney Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Walt Disney Co",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "INTC",
+      "security_id": "0cf42aa3-9816-4f1f-aa84-6482ac9303e9",
+      "issuer_id": "0000050863",
+      "master_name": "Intel Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "INTEL CORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "VZ",
+      "security_id": "a54066ec-ebb0-4d1e-b7cf-cd84298515ec",
+      "issuer_id": "0000732712",
+      "master_name": "Verizon Communications",
+      "sec_metadata_present": true,
+      "sec_entity_name": "VERIZON COMMUNICATIONS INC",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 8
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GILD",
+      "security_id": "aa222c8c-5f60-4b88-bc73-7aaadf424628",
+      "issuer_id": "0000882095",
+      "master_name": "Gilead Sciences, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "GILEAD SCIENCES, INC.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CMCSA",
+      "security_id": "5ddc1e60-daca-45da-b2de-f3ee597e60bc",
+      "issuer_id": "0001166691",
+      "master_name": "Comcast Corporation Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "COMCAST CORP",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MRK",
+      "security_id": "0d56791f-7395-40fa-853b-7b852bd9a7bf",
+      "issuer_id": "0000310158",
+      "master_name": "Merck & Co., Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Merck & Co., Inc.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 25
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CSCO",
+      "security_id": "9ec078b1-5167-4d3d-908c-a1e49be367f1",
+      "issuer_id": "0000858877",
+      "master_name": "Cisco Systems, Inc. Common Stock (DE)",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CISCO SYSTEMS, INC.",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GS",
+      "security_id": "064dd45f-7a58-452c-93f2-377f9a0cc7f2",
+      "issuer_id": "0000886982",
+      "master_name": "Goldman Sachs Group Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "GOLDMAN SACHS GROUP INC",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HD",
+      "security_id": "b6b1ea06-5d71-4146-be77-03f671788940",
+      "issuer_id": "0000354950",
+      "master_name": "Home Depot, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HOME DEPOT, INC.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CVS",
+      "security_id": "4f4530c8-5ba0-4b16-86ec-b0ce753c5ac8",
+      "issuer_id": "0000064803",
+      "master_name": "CVS HEALTH CORPORATION",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CVS HEALTH Corp",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "UNH",
+      "security_id": "943bb7c3-0fb0-4088-9a37-62549b5dc528",
+      "issuer_id": "0000731766",
+      "master_name": "UNITEDHEALTH GROUP INCORPORATED (Delaware)",
+      "sec_metadata_present": true,
+      "sec_entity_name": "UNITEDHEALTH GROUP INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "IBM",
+      "security_id": "21d40833-6d13-4031-9af3-02f6a516d791",
+      "issuer_id": "0000051143",
+      "master_name": "International Business Machines Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "INTERNATIONAL BUSINESS MACHINES CORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "QCOM",
+      "security_id": "39be1334-06b6-4df2-a2f1-b21b942628d0",
+      "issuer_id": "0000804328",
+      "master_name": "QUALCOMM Incorporated Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "QUALCOMM INC/DE",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BKNG",
+      "security_id": "c50070cd-18b4-4f29-ae0f-f192e4cc4553",
+      "issuer_id": "0001075531",
+      "master_name": "Booking Holdings Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Booking Holdings Inc.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BMY",
+      "security_id": "ad22d1ca-8bfc-45cc-ae7f-5f091bbc8c7c",
+      "issuer_id": "0000014272",
+      "master_name": "Bristol-Myers Squibb Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BRISTOL MYERS SQUIBB CO",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KO",
+      "security_id": "3795cafe-fd54-4f66-a31e-66774be875ca",
+      "issuer_id": "0000021344",
+      "master_name": "Coca-Cola Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "COCA COLA CO",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "WMT",
+      "security_id": "3f3e0ff9-599f-4fec-8842-6bc53f5129a1",
+      "issuer_id": "0000104169",
+      "master_name": "Walmart Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Walmart Inc.",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 10
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BRK.B",
+      "security_id": "71bb19d0-6c5f-4881-9552-33224badd810",
+      "issuer_id": "0001067983",
+      "master_name": "BERKSHIRE HATHAWAY Class B",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BERKSHIRE HATHAWAY INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AMGN",
+      "security_id": "201b268b-cde8-4010-9fe3-41d2ac7f1e9c",
+      "issuer_id": "0000318154",
+      "master_name": "Amgen Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMGEN INC",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 25
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MCD",
+      "security_id": "e077638f-a5c9-47e4-a7ce-2bfabf5ff698",
+      "issuer_id": "0000063908",
+      "master_name": "McDonald's Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MCDONALDS CORP",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SBUX",
+      "security_id": "0a7deac5-2d75-4e54-9f66-51c1c6fad55b",
+      "issuer_id": "0000829224",
+      "master_name": "Starbucks Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "STARBUCKS CORP",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 33
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BA",
+      "security_id": "3bed4fb2-4093-4433-b887-770ae3defd3a",
+      "issuer_id": "0000012927",
+      "master_name": "Boeing Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BOEING CO",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ORCL",
+      "security_id": "27982558-2464-4daf-bb2f-b3b728659884",
+      "issuer_id": "0001341439",
+      "master_name": "Oracle Corp",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ORACLE CORP",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PEP",
+      "security_id": "7b7466c4-5066-4e3e-80e6-8da1c835ce56",
+      "issuer_id": "0000077476",
+      "master_name": "PepsiCo, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PEPSICO INC",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 36
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CRM",
+      "security_id": "cf80d13f-470c-4947-8593-c5e098aeba4e",
+      "issuer_id": "0001108524",
+      "master_name": "Salesforce, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Salesforce, Inc.",
+      "sec_forms": {
+        "10-K": 3,
+        "10-Q": 10
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LOW",
+      "security_id": "a6ffe329-5ea3-4bb8-b58a-06ed1432dd50",
+      "issuer_id": "0000060667",
+      "master_name": "Lowe's Companies Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "LOWES COMPANIES INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CHTR",
+      "security_id": "596b0016-1d8d-4e2e-9ab3-bfe7514b6be8",
+      "issuer_id": "0001091667",
+      "master_name": "Charter Communications, Inc. Class A Common Stock New",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CHARTER COMMUNICATIONS, INC. /MO/",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MU",
+      "security_id": "1ef18995-5094-4f62-a5c5-e00168611152",
+      "issuer_id": "0000723125",
+      "master_name": "Micron Technology, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MICRON TECHNOLOGY INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 27
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BIIB",
+      "security_id": "0ebf2aad-3ac3-4274-9710-d4aaf455636f",
+      "issuer_id": "0000875045",
+      "master_name": "Biogen Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BIOGEN INC.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 36
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NKE",
+      "security_id": "db00f7c3-19bb-42b6-9beb-79e92487f99e",
+      "issuer_id": "0000320187",
+      "master_name": "Nike, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NIKE, Inc.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 34
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MDT",
+      "security_id": "1fc2849e-26d5-4f49-add6-2f913ded54c9",
+      "issuer_id": "0001613103",
+      "master_name": "Medtronic plc",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Medtronic plc",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE ordinary shares.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1613103/000114036125033993/ef20054873_ars.pdf"
+      ]
+    },
+    {
+      "symbol": "PM",
+      "security_id": "b19c4863-d517-4472-9236-8864e50dfa3e",
+      "issuer_id": "0001413329",
+      "master_name": "Philip Morris International Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Philip Morris International Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 27
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MO",
+      "security_id": "4eb91cfa-4f8b-4df5-acb7-2f3434fa283f",
+      "issuer_id": "0000764180",
+      "master_name": "Altria Group, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ALTRIA GROUP, INC.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 37
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DAL",
+      "security_id": "2cba3bdd-3f2a-4212-b64c-7bff33ad0f39",
+      "issuer_id": "0000027904",
+      "master_name": "Delta Air Lines, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DELTA AIR LINES, INC.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 30
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SLB",
+      "security_id": "799b9c5a-54c1-4241-ba42-0dcba7d161bb",
+      "issuer_id": "0000087347",
+      "master_name": "SLB Limited",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SLB LIMITED/NV",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE common stock; issuer is incorporated in Curacao and files US domestic issuer reports.",
+      "evidenceURLs": [
+        "https://investorcenter.slb.com/investor-resources/investor-faqs"
+      ]
+    },
+    {
+      "symbol": "CMG",
+      "security_id": "a3e21504-59e3-4f4b-8f9c-86a569bdf842",
+      "issuer_id": "0001058090",
+      "master_name": "Chipotle Mexican Grill, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CHIPOTLE MEXICAN GRILL INC",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 38
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ABBV",
+      "security_id": "09a51104-980a-47b6-ad4d-e4f04059be4a",
+      "issuer_id": "0001551152",
+      "master_name": "ABBVIE INC.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AbbVie Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 28
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CAT",
+      "security_id": "e7535ed9-c182-41ef-80f6-ee08f4166b6c",
+      "issuer_id": "0000018230",
+      "master_name": "Caterpillar Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CATERPILLAR INC",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GM",
+      "security_id": "de5fc535-1cdd-4a57-92ba-ac58a43aed81",
+      "issuer_id": "0001467858",
+      "master_name": "General Motors Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "General Motors Co",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TXN",
+      "security_id": "440efabf-b53c-4d70-b6e5-abb4f53e7104",
+      "issuer_id": "0000097476",
+      "master_name": "Texas Instruments Incorporated Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TEXAS INSTRUMENTS INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 30
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AMD",
+      "security_id": "03fb07bb-5db1-4077-8dea-5d711b272625",
+      "issuer_id": "0000002488",
+      "master_name": "Advanced Micro Devices, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ADVANCED MICRO DEVICES INC",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AVGO",
+      "security_id": "7a8b4fcf-0622-47ef-8541-de7f70ffc0c4",
+      "issuer_id": "0001730168",
+      "master_name": "Broadcom Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Broadcom Inc.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "RTX",
+      "security_id": "4d8f7f83-d998-4839-9134-38473cd13123",
+      "issuer_id": "0000101829",
+      "master_name": "RTX Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "RTX Corp",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 28
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "UNP",
+      "security_id": "e28f2c45-0bb1-45c1-84e0-f8d1a98c4088",
+      "issuer_id": "0000100885",
+      "master_name": "Union Pacific Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "UNION PACIFIC CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HAL",
+      "security_id": "14a06c29-cc38-444d-ab21-90198dc0fa18",
+      "issuer_id": "0000045012",
+      "master_name": "Halliburton Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HALLIBURTON CO",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 25
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "FCX",
+      "security_id": "75951f3e-87ac-4f58-98f3-d4fdb649d332",
+      "issuer_id": "0000831259",
+      "master_name": "Freeport-McMoran Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "FREEPORT-MCMORAN INC",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 40
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MA",
+      "security_id": "2140998d-7f62-46f2-a9b2-e44350bd4807",
+      "issuer_id": "0001141391",
+      "master_name": "Mastercard Incorporated",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Mastercard Inc",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HON",
+      "security_id": "4d463097-3a48-4120-a2ec-d9a4b68302a9",
+      "issuer_id": "0000773840",
+      "master_name": "Honeywell International Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HONEYWELL INTERNATIONAL INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MDLZ",
+      "security_id": "705ec4dc-73b9-42fc-8b17-d4e13c31cfae",
+      "issuer_id": "0001103982",
+      "master_name": "Mondelez International, Inc. Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Mondelez International, Inc.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 37
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "F",
+      "security_id": "1e80b378-a5e3-4727-96bf-9c64fdd4e7e2",
+      "issuer_id": "0000037996",
+      "master_name": "Ford Motor Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "FORD MOTOR CO",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 22
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "OXY",
+      "security_id": "11833dec-6549-48bf-ae48-17a25c3a9788",
+      "issuer_id": "0000797468",
+      "master_name": "Occidental Petroleum Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "OCCIDENTAL PETROLEUM CORP /DE/",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DD",
+      "security_id": "72b0cd73-1037-413e-a43c-12d68c760d9e",
+      "issuer_id": "0001666700",
+      "master_name": "DuPont de Nemours, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DuPont de Nemours, Inc.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DOW",
+      "security_id": "d59870fe-9add-43f2-960c-b2ec4f29d8d3",
+      "issuer_id": "0001751788",
+      "master_name": "Dow Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DOW INC.",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 24
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "AIG",
+      "security_id": "1ca76fea-6487-4cde-a341-07517b3286a0",
+      "issuer_id": "0000005272",
+      "master_name": "American International Group, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMERICAN INTERNATIONAL GROUP, INC.",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LLY",
+      "security_id": "87266a27-1b34-47bd-b236-bd3a9f59b138",
+      "issuer_id": "0000059478",
+      "master_name": "Eli Lilly & Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ELI LILLY & Co",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 14
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MMM",
+      "security_id": "b7f45fa8-7969-4ad9-ad77-775880b14278",
+      "issuer_id": "0000066740",
+      "master_name": "3M Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "3M CO",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 25
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "COST",
+      "security_id": "1f888138-e413-4939-b16b-bdd08bb4debd",
+      "issuer_id": "0000909832",
+      "master_name": "Costco Wholesale Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "COSTCO WHOLESALE CORP /NEW",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 30
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AMAT",
+      "security_id": "ce4833e1-c561-492a-aace-7eb451d09e02",
+      "issuer_id": "0000006951",
+      "master_name": "Applied Materials, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "APPLIED MATERIALS INC /DE",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 41
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "USB",
+      "security_id": "5553e8c9-004d-479d-a18c-83a42a87ed10",
+      "issuer_id": "0000036104",
+      "master_name": "U.S. Bancorp",
+      "sec_metadata_present": true,
+      "sec_entity_name": "US BANCORP \\DE\\",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 14
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LMT",
+      "security_id": "6ae1929e-adcd-4de1-9647-25763c8a4548",
+      "issuer_id": "0000936468",
+      "master_name": "Lockheed Martin Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "LOCKHEED MARTIN CORP",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PNC",
+      "security_id": "07c40f17-3f00-4792-9262-9fc21c73e9b4",
+      "issuer_id": "0000713676",
+      "master_name": "PNC Financial Services Group",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PNC FINANCIAL SERVICES GROUP, INC.",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 16
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TGT",
+      "security_id": "b70be706-b47c-4dbd-a6a7-4e98ea48c42a",
+      "issuer_id": "0000027419",
+      "master_name": "Target Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TARGET CORP",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NXPI",
+      "security_id": "840703bb-88cd-4cac-9acd-91eba330dc8a",
+      "issuer_id": "0001413447",
+      "master_name": "NXP Semiconductors N.V. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NXP Semiconductors N.V.",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21,
+        "20-F": 7,
+        "6-K": 134
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "Common/ordinary shares, not ADS; foreign issuer status alone does not imply ADR.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1413447/000141344726000008/nxpi-20251231.htm"
+      ]
+    },
+    {
+      "symbol": "REGN",
+      "security_id": "5098a4d2-0917-4184-862c-17dbefde2ed4",
+      "issuer_id": "0000872589",
+      "master_name": "Regeneron Pharmaceuticals, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "REGENERON PHARMACEUTICALS, INC.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 28
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LUV",
+      "security_id": "e930cf4f-6b04-4a7e-85e6-ad1b01cd3c17",
+      "issuer_id": "0000092380",
+      "master_name": "Southwest Airlines Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SOUTHWEST AIRLINES CO",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MET",
+      "security_id": "00e5cd6a-c370-4d72-86d2-fef5353aa17a",
+      "issuer_id": "0001099219",
+      "master_name": "MetLife, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "METLIFE INC",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CTSH",
+      "security_id": "1c7f101c-4c08-46e9-9f79-60ca13c07e51",
+      "issuer_id": "0001058290",
+      "master_name": "Cognizant Technology Solutions Corporation Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 15
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EBAY",
+      "security_id": "10b35642-7d26-47d1-8987-4f7a7632d273",
+      "issuer_id": "0001065088",
+      "master_name": "eBay Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EBAY INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 19
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KMI",
+      "security_id": "e47acf22-5340-477a-a3ac-020b1ed34d12",
+      "issuer_id": "0001506307",
+      "master_name": "Kinder Morgan, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "KINDER MORGAN, INC.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 36
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "VLO",
+      "security_id": "767ee8af-6479-44f5-8106-799120134246",
+      "issuer_id": "0001035002",
+      "master_name": "Valero Energy Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "VALERO ENERGY CORP/TX",
+      "sec_forms": {
+        "10-K": 14,
+        "10-Q": 41
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EXE",
+      "security_id": "ae7b5317-8b41-41df-b7f8-22c4de74b832",
+      "issuer_id": "0000895126",
+      "master_name": "Expand Energy Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EXPAND ENERGY Corp",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "NEE",
+      "security_id": "ac20a75d-5bb4-4d10-96e8-f5e58e730139",
+      "issuer_id": "0000753308",
+      "master_name": "NextEra Energy, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NEXTERA ENERGY INC",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EOG",
+      "security_id": "c997b367-2a67-472c-910f-d0324c599cea",
+      "issuer_id": "0000821189",
+      "master_name": "EOG Resources, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EOG RESOURCES INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MCK",
+      "security_id": "73706fa6-f7b8-4919-9381-ff7377a56726",
+      "issuer_id": "0000927653",
+      "master_name": "McKesson Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MCKESSON CORP",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SCHW",
+      "security_id": "1f868250-6f1d-4a57-9cd0-ac3f581a96e5",
+      "issuer_id": "0000316709",
+      "master_name": "The Charles Schwab Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SCHWAB CHARLES CORP",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 16
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BNY",
+      "security_id": "64d27c2a-18a1-4848-b205-73b5d428d5f9",
+      "issuer_id": "0001390777",
+      "master_name": "Bank of New York Mellon Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Bank of New York Mellon Corp",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 14
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "PYPL",
+      "security_id": "24cbba8c-831b-44e2-8503-dd0c2ed7af8f",
+      "issuer_id": "0001633917",
+      "master_name": "PayPal Holdings, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PayPal Holdings, Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CSX",
+      "security_id": "b8dd0cc3-7658-4c38-9c06-215c3377956e",
+      "issuer_id": "0000277948",
+      "master_name": "CSX Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CSX CORP",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AXP",
+      "security_id": "49b90cdc-f6f5-4a7c-807a-ed172e6017af",
+      "issuer_id": "0000004962",
+      "master_name": "American Express Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMERICAN EXPRESS CO",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "UAL",
+      "security_id": "98dbc012-8ca2-4e68-b2f7-464fdc9bbf3c",
+      "issuer_id": "0000100517",
+      "master_name": "United Airlines Holdings, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "United Airlines Holdings, Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AMT",
+      "security_id": "a148da60-6af9-443b-a3a9-9d3e65eb91e9",
+      "issuer_id": "0001053507",
+      "master_name": "American Tower Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMERICAN TOWER CORP /MA/",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 28
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KR",
+      "security_id": "e54335e7-7483-46e5-8410-2dfff00e98bb",
+      "issuer_id": "0000056873",
+      "master_name": "The Kroger Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "KROGER CO",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AAL",
+      "security_id": "41b54729-8470-4593-be38-b3a681871f81",
+      "issuer_id": "0000006201",
+      "master_name": "American Airlines Group Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "American Airlines Group Inc.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 33
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "APC",
+      "security_id": "492d6f8c-7dbc-44b2-8927-d684d56650cc",
+      "issuer_id": "0002080921",
+      "master_name": "ARKO Petroleum Corp. Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ARKO Petroleum Corp.",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 2
+      },
+      "status": "excluded",
+      "evidence_level": "official_targeted_identity_evidence"
+    },
+    {
+      "symbol": "TMO",
+      "security_id": "722b2e6d-2b85-4502-8f72-55f199fb3c47",
+      "issuer_id": "0000097745",
+      "master_name": "Thermo Fisher Scientific, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "THERMO FISHER SCIENTIFIC INC.",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "UPS",
+      "security_id": "b14caeab-f212-40ee-975a-38b9317e46b1",
+      "issuer_id": "0001090727",
+      "master_name": "United Parcel Service, Inc. Class B",
+      "sec_metadata_present": true,
+      "sec_entity_name": "UNITED PARCEL SERVICE INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TEVA",
+      "security_id": "4f516d72-e605-465b-a4a3-e665c1fe470c",
+      "issuer_id": "0000818686",
+      "master_name": "Teva Pharmaceutical Industries Limited",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TEVA PHARMACEUTICAL INDUSTRIES LTD",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26,
+        "6-K": 24
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "ACN",
+      "security_id": "6eace613-5882-4eca-8635-d1c41ee9e260",
+      "issuer_id": "0001467373",
+      "master_name": "Accenture PLC",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Accenture plc",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 10
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE Class A ordinary shares.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1467373/000146737325000217/acn-20250831.htm"
+      ]
+    },
+    {
+      "symbol": "EXPE",
+      "security_id": "3e3bbdb0-d6a4-4db1-8fbb-133f75fd4f66",
+      "issuer_id": "0001324424",
+      "master_name": "Expedia Group, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Expedia Group, Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DUK",
+      "security_id": "42f7b895-93aa-48d4-909e-6e05ad6bd2ca",
+      "issuer_id": "0001326160",
+      "master_name": "Duke Energy Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Duke Energy CORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "FDX",
+      "security_id": "4f42e4ef-1f4c-4c7f-9a92-6a25c999031d",
+      "issuer_id": "0001048911",
+      "master_name": "FedEx Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "FEDEX CORP",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "RF",
+      "security_id": "19abae8d-4f7b-402f-8d36-6418b3c79544",
+      "issuer_id": "0001281761",
+      "master_name": "Regions Financial Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "REGIONS FINANCIAL CORP",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NEM",
+      "security_id": "96da6121-b5ab-4f8b-bb53-60ae53cb5ed3",
+      "issuer_id": "0001164727",
+      "master_name": "Newmont Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NEWMONT Corp /DE/",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "MPC",
+      "security_id": "639306f2-59d8-46e0-95e7-0fe917d34f13",
+      "issuer_id": "0001510295",
+      "master_name": "MARATHON PETROLEUM CORPORATION",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Marathon Petroleum Corp",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SO",
+      "security_id": "5a71649b-e578-4229-81a3-d3a5c1351dd7",
+      "issuer_id": "0000092122",
+      "master_name": "The Southern Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SOUTHERN CO",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "FOXA",
+      "security_id": "21b45a5d-50c2-46be-bbae-02f5f23f7453",
+      "issuer_id": "0001754301",
+      "master_name": "Fox Corporation Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Fox Corp",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 23
+      },
+      "status": "excluded",
+      "evidence_level": "official_targeted_identity_evidence"
+    },
+    {
+      "symbol": "DHR",
+      "security_id": "42f6d400-741b-4a18-ae61-73faae71e2cb",
+      "issuer_id": "0000313616",
+      "master_name": "Danaher Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DANAHER CORP /DE/",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SPG",
+      "security_id": "abda5459-cb41-44a7-85bb-c94d32ea7d93",
+      "issuer_id": "0001063761",
+      "master_name": "Simon Property Group, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SIMON PROPERTY GROUP INC.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HUM",
+      "security_id": "5acb47e5-91b2-4c34-becd-a320436890d7",
+      "issuer_id": "0000049071",
+      "master_name": "Humana Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HUMANA INC",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BHC",
+      "security_id": "a666c932-85ed-41ba-a197-1d2a8655bd04",
+      "issuer_id": "0000885590",
+      "master_name": "Bausch Health Companies Inc",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Bausch Health Companies Inc.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "Common shares trade on both NYSE and TSX, not an ADS listing.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/885590/000088559026000023/bhc-20251231.htm"
+      ]
+    },
+    {
+      "symbol": "BLK",
+      "security_id": "467bc92e-332b-4f62-95c7-3c9288c20018",
+      "issuer_id": "0002012383",
+      "master_name": "Blackrock, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BlackRock, Inc.",
+      "sec_forms": {
+        "10-K": 1,
+        "10-Q": 3
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "B",
+      "security_id": "aef25bf7-87b7-483b-816c-aa76834b96dd",
+      "issuer_id": "0000756894",
+      "master_name": "Barrick Mining Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BARRICK MINING CORP",
+      "sec_forms": {
+        "20-F": 1,
+        "40-F": 24,
+        "6-K": 285
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "HPE",
+      "security_id": "03a4498a-78b3-4043-8dcb-2c3cf4dc352e",
+      "issuer_id": "0001645590",
+      "master_name": "Hewlett Packard Enterprise Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Hewlett Packard Enterprise Co",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NOC",
+      "security_id": "02deac19-d59b-4b15-ae55-a375e182bffd",
+      "issuer_id": "0001133421",
+      "master_name": "Northrop Grumman Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NORTHROP GRUMMAN CORP /DE/",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 30
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KHC",
+      "security_id": "df014db2-72a2-4686-be56-e3cdc15efb71",
+      "issuer_id": "0001637459",
+      "master_name": "The Kraft Heinz Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Kraft Heinz Co",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 34
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GD",
+      "security_id": "2430989b-3b12-4bff-9927-870040f8122a",
+      "issuer_id": "0000040533",
+      "master_name": "General Dynamics Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "GENERAL DYNAMICS CORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LYB",
+      "security_id": "ef918bdf-cce8-4282-b7f4-ac24b881f7e3",
+      "issuer_id": "0001489393",
+      "master_name": "LyondellBasell Industries N.V. Class A",
+      "sec_metadata_present": true,
+      "sec_entity_name": "LyondellBasell Industries N.V.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 27
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE ordinary shares.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1489393/000148939326000012/lyb-20251231.htm"
+      ]
+    },
+    {
+      "symbol": "CL",
+      "security_id": "a7dd2d26-59d5-4c85-8449-cd0cb975fd98",
+      "issuer_id": "0000021665",
+      "master_name": "Colgate-Palmolive Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "COLGATE PALMOLIVE CO",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "WYNN",
+      "security_id": "762eca63-f335-4d9c-bfc5-83607ad4d8e9",
+      "issuer_id": "0001174922",
+      "master_name": "Wynn Resorts, Limited Common stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "WYNN RESORTS LTD",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 41
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "STZ",
+      "security_id": "b459fd90-e740-4de1-b2e2-ecf548a51faf",
+      "issuer_id": "0000016918",
+      "master_name": "Constellation Brands, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CONSTELLATION BRANDS, INC.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ADBE",
+      "security_id": "2ac633b5-b3a7-4ba6-975d-f0f1e12dd1e4",
+      "issuer_id": "0000796343",
+      "master_name": "Adobe Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ADOBE INC.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "WDC",
+      "security_id": "70cb03f3-2184-4a3a-b04c-ad5ff9524612",
+      "issuer_id": "0000106040",
+      "master_name": "Western Digital Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "WESTERN DIGITAL CORP",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "SHW",
+      "security_id": "d2cb3472-a97f-4434-9736-c4ca7f82a67f",
+      "issuer_id": "0000089800",
+      "master_name": "The Sherwin-Williams Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SHERWIN WILLIAMS CO",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PRU",
+      "security_id": "830538b2-f315-42e8-a9d6-1b12e539c5ff",
+      "issuer_id": "0001137774",
+      "master_name": "Prudential Financial, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PRUDENTIAL FINANCIAL INC",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 15
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DE",
+      "security_id": "c00df298-9fb1-49e6-b9d9-92e3749ec5be",
+      "issuer_id": "0000315189",
+      "master_name": "Deere & Company",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DEERE & CO",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 36
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LVS",
+      "security_id": "612794e4-dbcc-4814-8ea2-3aa1e47523e3",
+      "issuer_id": "0001300514",
+      "master_name": "Las Vegas Sands Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "LAS VEGAS SANDS CORP",
+      "sec_forms": {
+        "10-K": 17,
+        "10-Q": 54
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "YUM",
+      "security_id": "932a2ac2-9eba-47f1-932a-0ce1408c3683",
+      "issuer_id": "0001041061",
+      "master_name": "Yum! Brands, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "YUM BRANDS INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TJX",
+      "security_id": "1168e42c-a598-4ed9-8371-2033a0f6af54",
+      "issuer_id": "0000109198",
+      "master_name": "TJX Companies, Inc. (The)",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TJX COMPANIES INC /DE/",
+      "sec_forms": {
+        "10-K": 14,
+        "10-Q": 41
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LRCX",
+      "security_id": "3ae976ac-6d14-4c4f-b02d-e83813f8a829",
+      "issuer_id": "0000707549",
+      "master_name": "Lam Research Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "LAM RESEARCH CORP",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DVN",
+      "security_id": "ab42bac7-0551-47fd-8f5b-3313142cb075",
+      "issuer_id": "0001090012",
+      "master_name": "Devon Energy Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DEVON ENERGY CORP/DE",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 38
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "JCI",
+      "security_id": "aa0bfa06-96bb-4fcc-bc56-0aa8a1c0be47",
+      "issuer_id": "0000833444",
+      "master_name": "Johnson Controls International plc",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Johnson Controls International plc",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE ordinary shares; 2016 Tyco/JCI merger financial mapping remains a separate qualification.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/833444/000083344425000063/jci-20250630.htm"
+      ]
+    },
+    {
+      "symbol": "MAR",
+      "security_id": "bd10e4a3-a39d-4726-91cd-8b4d68a635ab",
+      "issuer_id": "0001048286",
+      "master_name": "Marriott International Class A Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MARRIOTT INTERNATIONAL INC /MD/",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HCA",
+      "security_id": "f99ee8af-9d78-4b46-9f2c-3cf6ce839ccf",
+      "issuer_id": "0000860730",
+      "master_name": "HCA Healthcare, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HCA Healthcare, Inc.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CCI",
+      "security_id": "dd72d233-d85d-499d-9dc4-4b407bcdb734",
+      "issuer_id": "0001051470",
+      "master_name": "Crown Castle Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CROWN CASTLE INC.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CB",
+      "security_id": "2453845c-4785-46de-b332-6ee2438da196",
+      "issuer_id": "0000896159",
+      "master_name": "Chubb Limited",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Chubb Ltd",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "ACE common shares renamed CB in January 2016. Frozen 2016-01-04 quote 113.73 is consistent with ACE rather than old Chubb (approximately 130); no demonstrated wrong security splice found here. This is a targeted check, not complete action verification.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/896159/000119312516430900/d113231d8k.htm"
+      ]
+    },
+    {
+      "symbol": "M",
+      "security_id": "b3001dcc-4903-413c-b91a-985feacf5284",
+      "issuer_id": "0000794367",
+      "master_name": "Macy's Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Macy's, Inc.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AZO",
+      "security_id": "dae5e891-472a-42a9-8638-cc67023813f4",
+      "issuer_id": "0000866787",
+      "master_name": "AutoZone, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AUTOZONE INC",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KMB",
+      "security_id": "5ca2cc07-2657-4769-9491-1c89b5f58a76",
+      "issuer_id": "0000055785",
+      "master_name": "Kimberly-Clark Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "KIMBERLY CLARK CORP",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TRV",
+      "security_id": "af898beb-7df0-4dea-8b02-d6c5f4f70137",
+      "issuer_id": "0000086312",
+      "master_name": "The Travelers Companies, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TRAVELERS COMPANIES, INC.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TSN",
+      "security_id": "73caedb2-6646-4666-8891-88b9718bd235",
+      "issuer_id": "0000100493",
+      "master_name": "Tyson Foods, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TYSON FOODS, INC.",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 37
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BBY",
+      "security_id": "a5a7a7b7-5a80-44c6-8051-989b3bb4a1c2",
+      "issuer_id": "0000764478",
+      "master_name": "Best Buy Company, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BEST BUY CO INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ORLY",
+      "security_id": "c73e2c28-af3f-4f5d-b550-a56b567ed47c",
+      "issuer_id": "0000898173",
+      "master_name": "O'Reilly Automotive, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "O REILLY AUTOMOTIVE INC",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TFC",
+      "security_id": "0c90392a-7b74-440f-a0a1-125bee898a51",
+      "issuer_id": "0000092230",
+      "master_name": "Truist Financial Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TRUIST FINANCIAL CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GEN",
+      "security_id": "89815654-c60c-4b6a-ab96-80982bf4e53b",
+      "issuer_id": "0000849399",
+      "master_name": "Gen Digital Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Gen Digital Inc.",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 37
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ELV",
+      "security_id": "267f9ea7-eb9a-41cd-946f-5fab57943f0a",
+      "issuer_id": "0001156039",
+      "master_name": "Elevance Health, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Elevance Health, Inc.",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 40
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HLT",
+      "security_id": "072e0811-8f84-4acc-bc3b-95761ea08dd6",
+      "issuer_id": "0001585689",
+      "master_name": "Hilton Worldwide Holdings Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Hilton Worldwide Holdings Inc.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 34
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "WMB",
+      "security_id": "b60af993-7490-471e-9926-1cbedb46fcef",
+      "issuer_id": "0000107263",
+      "master_name": "Williams Companies Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "WILLIAMS COMPANIES, INC.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "APA",
+      "security_id": "6f825c9d-e839-4539-a64e-cfa7fd71015b",
+      "issuer_id": "0001841666",
+      "master_name": "APA Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "APA Corp",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 17
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "DG",
+      "security_id": "2edb3ef9-b5d8-4667-be8f-334884498ac9",
+      "issuer_id": "0000029534",
+      "master_name": "Dollar General Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DOLLAR GENERAL CORP",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 37
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EW",
+      "security_id": "0ffbf7a5-d5ed-4e83-8499-2d58645e4d9c",
+      "issuer_id": "0001099800",
+      "master_name": "Edwards Lifesciences Corp",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Edwards Lifesciences Corp",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ISRG",
+      "security_id": "e02df0be-fd3a-4762-b4c1-c274784bf756",
+      "issuer_id": "0001035267",
+      "master_name": "Intuitive Surgical, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "INTUITIVE SURGICAL INC",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EMR",
+      "security_id": "812453a9-6ec4-4edb-a1d6-7f08a987ba23",
+      "issuer_id": "0000032604",
+      "master_name": "Emerson Electric Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EMERSON ELECTRIC CO",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 39
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CMI",
+      "security_id": "badebe9a-89a1-4579-9e94-28e11d901b16",
+      "issuer_id": "0000026172",
+      "master_name": "Cummins Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CUMMINS INC",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ADP",
+      "security_id": "6ca2e51d-21df-4ff0-a134-abfdbe084142",
+      "issuer_id": "0000008670",
+      "master_name": "Automatic Data Processing, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AUTOMATIC DATA PROCESSING INC",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "APD",
+      "security_id": "57ca9916-468b-4c77-8be7-2495a7c17df2",
+      "issuer_id": "0000002969",
+      "master_name": "Air Products & Chemicals, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Air Products & Chemicals, Inc.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 31
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "LUMN",
+      "security_id": "8c71bd01-e130-4c85-90b5-abef440c2029",
+      "issuer_id": "0000018926",
+      "master_name": "Lumen Technologies, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Lumen Technologies, Inc.",
+      "sec_forms": {
+        "10-K": 11,
+        "10-Q": 33
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GLW",
+      "security_id": "b3ce91f9-c7b2-4ab2-9a16-57fb17e06294",
+      "issuer_id": "0000024741",
+      "master_name": "Corning Incorporated",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CORNING INC /NY",
+      "sec_forms": {
+        "10-K": 5,
+        "10-Q": 15
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EXC",
+      "security_id": "21a5e17d-c566-4f1b-8c25-0a505ba37478",
+      "issuer_id": "0001109357",
+      "master_name": "Exelon Corporation Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EXELON CORP",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 28
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "EQIX",
+      "security_id": "f801bacd-b8a5-4478-8321-699c3c9984cb",
+      "issuer_id": "0001101239",
+      "master_name": "Equinix, Inc. Common Stock REIT",
+      "sec_metadata_present": true,
+      "sec_entity_name": "EQUINIX INC",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "D",
+      "security_id": "7ef3c3bc-854c-421a-a778-dc87a402f1d9",
+      "issuer_id": "0000715957",
+      "master_name": "Dominion Energy, Inc Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DOMINION ENERGY, INC",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CAH",
+      "security_id": "3c1286a9-21d1-45cf-b569-502c86ff121d",
+      "issuer_id": "0000721371",
+      "master_name": "Cardinal Health, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "CARDINAL HEALTH INC",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 36
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "GIS",
+      "security_id": "e2fe0a11-d58e-4b4e-a847-e560fee24a94",
+      "issuer_id": "0000040704",
+      "master_name": "General Mills, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "GENERAL MILLS INC",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ULTA",
+      "security_id": "2e3d3b75-58cc-40f5-bf12-b73da8aac3d3",
+      "issuer_id": "0001403568",
+      "master_name": "Ulta Beauty, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Ulta Beauty, Inc.",
+      "sec_forms": {
+        "10-K": 18,
+        "10-Q": 55
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "COR",
+      "security_id": "ca56f277-6345-49e3-889a-6a748a4f1c79",
+      "issuer_id": "0001140859",
+      "master_name": "Cencora, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Cencora, Inc.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 24
+      },
+      "status": "excluded",
+      "evidence_level": "v1_quality_exclusion"
+    },
+    {
+      "symbol": "CCL",
+      "security_id": "d8917341-9b29-4fe9-a373-c8ddd6d5ae86",
+      "issuer_id": "0000815097",
+      "master_name": "Carnival Corporation Ltd.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Carnival Corp Ltd.",
+      "sec_forms": {
+        "10-K": 15,
+        "10-Q": 46
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE CCL is Carnival Corporation common stock. Historical Carnival plc ADS ticker was CUK, a different security not in this sample.",
+      "evidenceURLs": [
+        "https://www.carnivalcorp.com/wp-content/uploads/2024/08/Carnival-plc-2021-Annual-Report-1.pdf"
+      ]
+    },
+    {
+      "symbol": "DLTR",
+      "security_id": "d0d63992-2d20-4f63-aa62-30cf76fb3204",
+      "issuer_id": "0000935703",
+      "master_name": "Dollar Tree Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "DOLLAR TREE, INC.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BDX",
+      "security_id": "419e89a6-efe2-4773-ba4f-1bf5dca33cb2",
+      "issuer_id": "0000010795",
+      "master_name": "Becton, Dickinson and Co.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BECTON DICKINSON & CO",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NSC",
+      "security_id": "477b4ce8-cdd7-48b8-9c40-e64e37bbeadd",
+      "issuer_id": "0000702165",
+      "master_name": "Norfolk Southern Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NORFOLK SOUTHERN CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ITW",
+      "security_id": "399a368e-f430-4a40-bd27-a046ea7bc0d9",
+      "issuer_id": "0000049826",
+      "master_name": "Illinois Tool Works Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ILLINOIS TOOL WORKS INC",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TMUS",
+      "security_id": "7f9df478-237c-45c8-bc80-c97a53478c37",
+      "issuer_id": "0001283699",
+      "master_name": "T-Mobile US, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "T-Mobile US, Inc.",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NWL",
+      "security_id": "51dc5fc6-c891-4293-a435-f09ca03dcfc4",
+      "issuer_id": "0000814453",
+      "master_name": "Newell Brands Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NEWELL BRANDS INC.",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ETN",
+      "security_id": "d4806319-2c9c-48d6-bda3-aedb0178e83b",
+      "issuer_id": "0001551182",
+      "master_name": "Eaton Corporation, plc Ordinary Shares",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Eaton Corp plc",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 29
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "official_targeted_identity_evidence",
+      "retention_reason": "NYSE ordinary shares following the 2012 reorganization.",
+      "evidenceURLs": [
+        "https://www.sec.gov/divisions/corpfin/cf-noaction/14a-8/2013/qubeinvestmenteaton122413-14a8-incoming.pdf"
+      ]
+    },
+    {
+      "symbol": "PANW",
+      "security_id": "ba1cc326-cf8d-4d7c-a49e-8b413555f3d0",
+      "issuer_id": "0001327567",
+      "master_name": "Palo Alto Networks, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Palo Alto Networks Inc",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 21
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "NUE",
+      "security_id": "3c3a99ab-4500-4f14-8f23-50a01d3019b1",
+      "issuer_id": "0000073309",
+      "master_name": "Nucor Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "NUCOR CORP",
+      "sec_forms": {
+        "10-K": 12,
+        "10-Q": 35
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HPQ",
+      "security_id": "8e341794-40b2-4509-bca8-c7b6fc49eb96",
+      "issuer_id": "0000047217",
+      "master_name": "HP Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HP INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 30
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "PPG",
+      "security_id": "6d4f3b18-4f02-4a06-9d3d-9dadcc9bce1b",
+      "issuer_id": "0000079879",
+      "master_name": "PPG Industries, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "PPG INDUSTRIES INC",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 11
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TAP",
+      "security_id": "bf5d1b34-b1df-42e4-8878-db44df226bd3",
+      "issuer_id": "0000024545",
+      "master_name": "Molson Coors Beverage Company Class B",
+      "sec_metadata_present": true,
+      "sec_entity_name": "MOLSON COORS BEVERAGE CO",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BSX",
+      "security_id": "2652a688-e44c-469e-92f8-8ece2594d4c0",
+      "issuer_id": "0000885725",
+      "master_name": "Boston Scientific Corp.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BOSTON SCIENTIFIC CORP",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 18
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AZN",
+      "security_id": "7b60bc3b-8715-4e23-a5df-19642434f7a7",
+      "issuer_id": "0000901832",
+      "master_name": "AstraZeneca PLC",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ASTRAZENECA PLC",
+      "sec_forms": {
+        "20-F": 7,
+        "6-K": 816
+      },
+      "status": "excluded",
+      "evidence_level": "official_targeted_identity_evidence"
+    },
+    {
+      "symbol": "SYY",
+      "security_id": "090b7913-4370-43eb-a42c-9af8400bc09d",
+      "issuer_id": "0000096021",
+      "master_name": "Sysco Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "SYSCO CORP",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 24
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "FITB",
+      "security_id": "94f6f5c6-861b-47fc-b208-1e7765e4a68f",
+      "issuer_id": "0000035527",
+      "master_name": "Fifth Third Bancorp",
+      "sec_metadata_present": true,
+      "sec_entity_name": "FIFTH THIRD BANCORP",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 22
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ZBH",
+      "security_id": "fc12f337-b4be-4805-9206-2f67ec0a0057",
+      "issuer_id": "0001136869",
+      "master_name": "Zimmer Biomet Holdings, Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ZIMMER BIOMET HOLDINGS, INC.",
+      "sec_forms": {
+        "10-K": 9,
+        "10-Q": 26
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ILMN",
+      "security_id": "77832354-b542-4769-b168-1ee930e2d2e9",
+      "issuer_id": "0001110803",
+      "master_name": "Illumina, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ILLUMINA, INC.",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "CI",
+      "security_id": "16af176c-d616-41d8-8a5a-b40c326e050e",
+      "issuer_id": "0001739940",
+      "master_name": "The Cigna Group",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Cigna Group",
+      "sec_forms": {
+        "10-K": 8,
+        "10-Q": 23
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "KSS",
+      "security_id": "31cffb44-7b1b-40e0-8c79-b17bb2508d09",
+      "issuer_id": "0000885639",
+      "master_name": "Kohls Corporation",
+      "sec_metadata_present": true,
+      "sec_entity_name": "KOHLS Corp",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "TSM",
+      "security_id": "626ce11f-1e10-488b-8d75-a3eff18d6d0f",
+      "issuer_id": "0001046179",
+      "master_name": "Taiwan Semiconductor Manufacturing Company Ltd.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "TAIWAN SEMICONDUCTOR MANUFACTURING CO LTD",
+      "sec_forms": {
+        "20-F": 12,
+        "6-K": 637
+      },
+      "status": "excluded",
+      "evidence_level": "official_targeted_identity_evidence"
+    },
+    {
+      "symbol": "ROST",
+      "security_id": "adcce409-1666-4ceb-89fa-ecbb458c18ea",
+      "issuer_id": "0000745732",
+      "master_name": "Ross Stores, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "ROSS STORES, INC.",
+      "sec_forms": {
+        "10-K": 13,
+        "10-Q": 40
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "HBAN",
+      "security_id": "c4e4715c-44f9-4e5a-9663-be3b72e767b8",
+      "issuer_id": "0000049196",
+      "master_name": "Huntington Bancshares Incorporated Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "HUNTINGTON BANCSHARES INC /MD/",
+      "sec_forms": {
+        "10-K": 4,
+        "10-Q": 12
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "BAX",
+      "security_id": "feee4056-913c-46be-8e7e-71ee600bfe18",
+      "issuer_id": "0000010456",
+      "master_name": "Baxter International Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "BAXTER INTERNATIONAL INC",
+      "sec_forms": {
+        "10-K": 10,
+        "10-Q": 32
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "AEP",
+      "security_id": "90e9c946-6323-49a4-be69-116f04fec288",
+      "issuer_id": "0000004904",
+      "master_name": "American Electric Power Company, Inc. Common Stock",
+      "sec_metadata_present": true,
+      "sec_entity_name": "AMERICAN ELECTRIC POWER CO INC",
+      "sec_forms": {
+        "10-K": 7,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    },
+    {
+      "symbol": "ICE",
+      "security_id": "dab97681-1775-47b8-922a-d23a4e50744d",
+      "issuer_id": "0001571949",
+      "master_name": "Intercontinental Exchange  Inc.",
+      "sec_metadata_present": true,
+      "sec_entity_name": "Intercontinental Exchange, Inc.",
+      "sec_forms": {
+        "10-K": 6,
+        "10-Q": 20
+      },
+      "status": "retained_with_snapshot_limitations",
+      "evidence_level": "current_master_and_SEC_metadata_screen_only"
+    }
+  ],
+  "unresolved": [
+    {
+      "issue": "Current master, current SEC SIC and current-survivor 2016 selection remain non-PIT. Exclusions are necessary quality corrections but do not recover delisted equities or create an unbiased universe.",
+      "action": "Describe all runs as exploratory; do not claim full historical 500-stock protocol."
+    },
+    {
+      "issue": "Many current issuer CIKs are successor registrants: XOM current 2115436 versus historical 34088; BLK, APA, AVGO, DIS, CI, DD and JCI also require historical issuer mapping.",
+      "action": "Do not backfill current-company financial facts into earlier periods or treat missing historical facts as healthy. Use dated predecessor mappings supported by filings, or reject unknown fundamentals.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/2115436/000003408826000093/xom-20260630.htm",
+        "https://www.sec.gov/Archives/edgar/data/34088/000119312526291986/d70995d8k.htm"
+      ]
+    },
+    {
+      "issue": "DD historical series follows the Dow/DowDuPont chain and later distributions; JCI has a 2016 reverse merger and cash/share consideration. These are economic continuity/action and financial-comparability qualifications, not demonstrated ADRs or unrelated ticker reuse in the reviewed evidence.",
+      "action": "Retained under existing explicitly modeled action proxy; do not label shareholder-entitlement ledger fully validated. Financial filters must fail closed if accession/issuer comparability is unavailable.",
+      "evidenceURLs": [
+        "https://www.sec.gov/Archives/edgar/data/1666700/000166670020000006/dupont201910-k.htm",
+        "https://www.sec.gov/Archives/edgar/data/833444/000110465916143068/a16-17941_18k.htm"
+      ]
+    },
+    {
+      "issue": "Names and recent filing-form metadata are screening evidence, not a complete 2016–2026 security type history for all 190 retained names.",
+      "action": "Report exact review coverage rather than asserting complete verification; a production historical security master and corporate-action reconciliation are still needed."
+    }
+  ],
+  "statistical_and_implementation_review": [
+    "All previously viewed periods, including 2024–2026, are exploratory V2 reuse. A new freeze does not make them an untouched holdout.",
+    "Use accession-specific facts available by acceptanceDateTime or a conservative next-session delay. Period-end dates and latest restated values are not availability timestamps. SEC filing date only should be delayed, not assumed available before the close.",
+    "8-K filing can lag the actual news and important earnings/guidance content is often in exhibits. This is an observable disclosed-risk veto, not a validated irrational-versus-fundamental label.",
+    "Missing, stale, mismatched-issuer or non-comparable financial facts should remain unknown and fail closed; never count absent data as favorable fundamentals.",
+    "Freeze 80% repair, 5% stop and 10-session cap before reading V2 outcomes. Do not select thresholds or a variant based on the reused evaluation window.",
+    "Run same-universe V1 plus fixed filter-only, exit-only and combined variants with identical cash, settlement, costs, warmups and boundary handling. Report exposure, trades, cash and coverage alongside returns.",
+    "A repaired residual should be measured relative to a fixed signal-time anchor and an explicitly defined causal peer-return chain; a rolling 5-day loss dropping from the window is not necessarily recovery.",
+    "Use consistent split/distribution units for anchor, entry cost and stop. Account for opening gaps that already satisfy the target; never assume a target execution price merely because a daily high crossed it.",
+    "If triggering on a daily close and filling next open, label it close-triggered/next-open execution. A 5% trigger is not a hard 5% maximum loss. Both overnight gaps and implementation costs can exceed it.",
+    "Incremental alpha requires paired net daily return comparisons against the corrected same-universe V1 and appropriate descriptive market-exposure benchmarks, plus uncertainty; lower exposure alone can explain lower drawdown.",
+    "Block bootstrap intervals address sampling uncertainty only, not lookahead, survivorship, publication delay or classification errors."
+  ]
+}

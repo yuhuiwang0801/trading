@@ -1,0 +1,28 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.*
+!.env.example
+node_modules/
+frontend/dist/
+data/*
+!data/.gitkeep
+*.log
+.DS_Store
+*.egg-info/
+
+# Local account evidence and generated UI artifacts are never published.
+docs/screenshots/
+docs/*.json
+docs/VALIDATION.md
+*.tsbuildinfo
+
+# Immutable public security metadata required by V2; no quotes or account data.
+!data/reversal/
+data/reversal/*
+!data/reversal/alpaca_sip_20261027_proxy200_v2/
+data/reversal/alpaca_sip_20261027_proxy200_v2/*
+!data/reversal/alpaca_sip_20261027_proxy200_v2/security_master.csv
+!data/reversal/v2_identity_review.json

@@ -1,0 +1,57 @@
+x-app: &app
+  build: .
+  environment: &env
+    DATABASE_URL: postgresql+psycopg://trading:${POSTGRES_PASSWORD:-local-paper-only}@postgres:5432/trading
+    MARKET_SOURCE: ${MARKET_SOURCE:-demo}
+    API_HOST: 0.0.0.0
+    APP_ACCESS_TOKEN: ${APP_ACCESS_TOKEN:?Set APP_ACCESS_TOKEN in .env before deployment}
+    ALLOWED_HOSTS: ${ALLOWED_HOSTS:-127.0.0.1,localhost}
+    ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://127.0.0.1:8010,http://localhost:8010}
+    ALPACA_API_KEY: ${ALPACA_API_KEY:-}
+    ALPACA_SECRET_KEY: ${ALPACA_SECRET_KEY:-}
+    ALPACA_DATA_FEED: ${ALPACA_DATA_FEED:-iex}
+    MARKET_SYMBOLS: ${MARKET_SYMBOLS:-AAPL,MSFT,NVDA,AMZN,META,GOOGL,SPY}
+    ROBINHOOD_ACCESS_TOKEN: ${ROBINHOOD_ACCESS_TOKEN:-}
+    ROBINHOOD_EXECUTION_ACCOUNT: ${ROBINHOOD_EXECUTION_ACCOUNT:-}
+  volumes:
+    - trading-data:/app/data
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: trading
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-paper-only}
+      POSTGRES_DB: trading
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trading"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  migrate:
+    <<: *app
+    command: ["sh", "-c", "alembic upgrade head && python -m trading.bootstrap"]
+    depends_on:
+      postgres: {condition: service_healthy}
+  api:
+    <<: *app
+    ports: ["127.0.0.1:8010:8000"]
+    restart: unless-stopped
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+  worker:
+    <<: *app
+    command: ["python", "-m", "trading.worker"]
+    restart: unless-stopped
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+  research:
+    <<: *app
+    command: ["python", "-m", "trading.research_worker"]
+    restart: unless-stopped
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+volumes:
+  postgres-data:
+  trading-data:
