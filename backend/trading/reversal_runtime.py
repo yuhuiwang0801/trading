@@ -29,13 +29,14 @@ from .reversal_fundamentals import (fetch_json, normalized_facts, normalized_fil
                                    issuer_daily_features)
 from .reversal_refinement import prepare_refinement
 from .reversal_signals import SignalConfig, prepare_signals
+from .intraday_market import REFERENCE_VERSION
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG_PATH = ROOT / 'config/reversal_research_v2.json'
 SNAPSHOT = ROOT / 'data/reversal/alpaca_sip_20261027_proxy200_v2'
 IDENTITY_PATH = ROOT / 'data/reversal/v2_identity_review.json'
 STRATEGY_ID = 'reversal_v2'
-SCHEMA = 'reversal_v2_runtime_packet_v1'
+SCHEMA = 'reversal_v2_runtime_packet_v2'
 HISTORY_DAYS = 750
 OBSERVATION_SESSIONS = 32
 
@@ -130,6 +131,14 @@ def load_runtime_packet(now=None, data_dir=None):
     packet['execution_eligible'] = False
     packet['expected_signal_session'] = dates['signal_session']
     reasons = list(packet.get('blocked_reasons', []))
+    # A new data schema needs a fresh build from the same authoritative daily
+    # inputs, not guessed eligibility reconstructed from an old candidate list.
+    # Retain old observations for already-owned positions' daily exit recovery.
+    if packet.get('status') in {'ready', 'expired'} and (
+            packet.get('schema') != SCHEMA or packet.get('intraday_reference_version') != REFERENCE_VERSION
+            or not isinstance(packet.get('intraday_reference'), dict)
+            or not packet.get('intraday_reference')):
+        reasons.append('intraday_reference_upgrade_required')
     try:
         if packet.get('config_hash') != _file_hash(CONFIG_PATH):
             reasons.append('strategy_configuration_changed')
@@ -385,6 +394,27 @@ def packet_from_frames(panel, fundamentals, master, config, now, *, config_hash=
             'risk_class': score.get('risk_class', 'unknown'), 'residual_history': observations[security.symbol]}
     security_master = {r.symbol: {'security_id': r.security_id, 'issuer_id': r.issuer_id, 'industry': r.industry}
                        for r in master.itertuples()}
+    # Seal the daily membership and raw quote baselines separately from the
+    # unchanged daily strategy. Live snapshots must not select a different peer
+    # benchmark merely because one constituent's quote is missing or stale.
+    latest_prepared = prepared[prepared.session.eq(signal)].copy()
+    eligible_rows = latest_prepared[
+        latest_prepared.eligible.eq(True) & latest_prepared.close.gt(0)
+        & latest_prepared.volume.gt(0) & latest_prepared.tr_close.gt(0)
+        & np.isfinite(latest_prepared.close) & np.isfinite(latest_prepared.tr_close)]
+    if 'interpolated' in eligible_rows:
+        eligible_rows = eligible_rows[~eligible_rows.interpolated.fillna(False).astype(bool)]
+    eligible_ids = set(eligible_rows.security_id)
+    intraday_reference = {}
+    for security in master.itertuples():
+        price = price_index.loc[(signal, security.security_id)]
+        peers = eligible_rows[(eligible_rows.industry == security.industry)
+                              & eligible_rows.security_id.ne(security.security_id)]
+        intraday_reference[security.symbol] = {
+            'session': signal, 'security_id': security.security_id, 'issuer_id': security.issuer_id,
+            'industry': security.industry, 'raw_close': price['close'], 'tr_close': price['tr_close'],
+            'eligible': security.security_id in eligible_ids,
+            'peer_symbols': sorted(peers.symbol.tolist()), 'minimum_peers': config['min_other_peers']}
     return _clean({'schema': SCHEMA, 'strategy_id': STRATEGY_ID, 'strategy_version': config['strategy_version'],
         'status': 'ready', 'quality': 'ready', 'blocked_reasons': [], 'created_at': iso(stamp), 'as_of': iso(stamp),
         **dates, 'config_hash': config_hash or _hash(config), 'metadata_hash': metadata_hash,
@@ -392,6 +422,7 @@ def packet_from_frames(panel, fundamentals, master, config, now, *, config_hash=
         'market_data_refreshed': True, 'sec_refreshed': True, 'universe_count': len(master),
         'coverage': coverage[coverage.session.eq(signal)].to_dict('records')[0],
         'candidates': candidates, 'observations': observations, 'securities': securities, 'security_master': security_master,
+        'intraday_reference': intraday_reference, 'intraday_reference_version': REFERENCE_VERSION,
         'screening': latest[['symbol', 'entry_rejection_reason', 'risk_class', 'candidate_v2']].to_dict('records'),
         'rules': {'entry_filters': config['entry_filters'], 'dynamic_exit': config['dynamic_exit'],
                   'max_positions': config['max_positions'], 'max_entries_per_day': config['max_entries_per_day'],

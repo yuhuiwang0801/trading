@@ -29,6 +29,10 @@ export default function ManagedPolicy({ language, policy, config, entryFeasibili
   const fixed = policy.universe_mode === 'fixed_vetted_universe'
   const prepared = config?.scope_mode === 'strategy_managed' && config.policy_hash === policy.policy_hash
   const symbols = prepared && Array.isArray(config?.symbols) ? config.symbols : []
+  const intraday = policy.intraday_exit
+  const tradingWindow = (value: any) => typeof value === 'string'
+    ? value.replace('regular close', t('正常收盘', 'regular close')).replace('America/New_York', t('美东', 'ET'))
+    : '—'
   const cap = (weight: any, absolute: any) => weight == null ? '—' : absolute == null
     ? t(`账户净值的 ${pct(weight)}`, `${pct(weight)} of account equity`)
     : t(`净值的 ${pct(weight)} 与 ${money(absolute)} 取较小值`, `Lower of ${pct(weight)} of equity or ${money(absolute)}`)
@@ -43,6 +47,12 @@ export default function ManagedPolicy({ language, policy, config, entryFeasibili
       {policy.max_industry_weight != null && <div><dt>{t('行业持仓上限', 'Industry exposure cap')}</dt><dd>{pct(policy.max_industry_weight)}</dd></div>}
       {policy.max_issuer_weight != null && <div><dt>{t('同一发行人上限', 'Issuer exposure cap')}</dt><dd>{pct(policy.max_issuer_weight)}</dd></div>}
       {policy.max_exposure_weight != null && <div><dt>{t('总敞口上限', 'Total exposure cap')}</dt><dd>{pct(policy.max_exposure_weight)}</dd></div>}
+      {policy.buy_window && <div><dt>{t('买入时间', 'Entry window')}</dt><dd>{tradingWindow(policy.buy_window)}</dd></div>}
+      {policy.sell_window && <div><dt>{t('卖出时间', 'Exit window')}</dt><dd>{tradingWindow(policy.sell_window)}</dd></div>}
+      {intraday?.enabled === true && <>
+        <div><dt>{t('盘中退出阈值', 'Intraday exit thresholds')}</dt><dd>{t(`偏离修复 ${pct(intraday.rebound_fraction)} · 亏损 ${pct(intraday.absolute_stop_loss)}`, `${pct(intraday.rebound_fraction)} dislocation repair · ${pct(intraday.absolute_stop_loss)} loss`)}</dd></div>
+        <div><dt>{t('盈利回撤保护', 'Gain drawdown protection')}</dt><dd>{t(`盈利 ${pct(intraday.trailing_activation_pct)} 后，峰值回撤 ${pct(intraday.trailing_drawdown_pct)}`, `After a ${pct(intraday.trailing_activation_pct)} gain, ${pct(intraday.trailing_drawdown_pct)} below the peak`)}</dd></div>
+      </>}
     </dl>
     {prepared ? <div className="live-policy-amounts"><div><span>{t('最近账户快照：单笔 / 每日上限', 'Latest account snapshot: order / daily cap')}</span><strong className="mono">{money(config.max_order_amount)} / {money(config.max_daily_added)}</strong></div><div><span>{t('计入可用现金后的单笔上限', 'Buy cap after available cash constraint')}</span><strong className="mono">{money(config.current_buy_order_ceiling)}</strong></div></div> : <p className="live-control-note">{t('点击开启后，平台同步账户并自动计算对应金额。', 'Select Enable to synchronize the account and calculate the dollar limits.')}</p>}
     <p className="live-control-note">{t('金额随账户净值自动调整，实际买入还受可用现金、现有持仓和未完成订单限制；仅整股、无杠杆。', 'Dollar limits adjust with account equity. Available cash, existing holdings and pending orders further constrain purchases. Whole shares only, without leverage.')}</p>

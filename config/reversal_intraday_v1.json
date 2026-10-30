@@ -1,0 +1,11 @@
+{
+  "version": "v2_intraday_exit_v1",
+  "enabled": true,
+  "absolute_stop_loss": "0.05",
+  "rebound_fraction": "0.8",
+  "relative_stop_multiple": "1",
+  "trailing_activation_pct": "0.02",
+  "trailing_drawdown_pct": "0.015",
+  "quote_max_age_seconds": 30,
+  "validation_status": "scenario_tested_not_historical_intraday_backtested"
+}

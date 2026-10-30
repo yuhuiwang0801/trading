@@ -8,7 +8,7 @@ from .mcp_broker import MCPClient, TokenProvider
 from .robinhood_oauth import RobinhoodOAuth
 
 
-LIVE_CONTROL_VERSION = 5
+LIVE_CONTROL_VERSION = 6
 
 
 def live_control_identity(service):

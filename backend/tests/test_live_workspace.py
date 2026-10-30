@@ -34,6 +34,22 @@ def intent(ident='intent-1', **patch):
                                        'signal_price': '200.75', 'signal_bar_time': STAMP}, **patch}
 
 
+def test_intraday_exit_evidence_is_visible_but_untrusted_payloads_are_not():
+    source = snapshot()
+    source['positions'] = [{'symbol': 'AAPL', 'quantity': '5', 'avg_price': '200',
+        'intraday_status': 'triggered', 'exit_reason': 'INTRADAY_TRAILING_STOP',
+        'intraday_peak_bid': '206', 'intraday_trailing_active': True,
+        'intraday_evidence': {'confirmed_bid': '202.9', 'peak_bid': '206', 'trailing_active': True,
+                             'observed_at': STAMP, 'peer_count': 5, 'secret': 'must-not-pass'},
+        'intraday_quote_check': {'status': 'PASSED', 'secret': 'must-not-pass'}}]
+    row = build_live_workspace(source, now=NOW)['positions'][0]
+    assert row['exit_reason'] == 'INTRADAY_TRAILING_STOP'
+    assert row['intraday_peak_bid'] == '206'
+    assert row['intraday_evidence']['confirmed_bid'] == '202.9'
+    assert row['intraday_quote_check'] == {'status': 'PASSED'}
+    assert 'must-not-pass' not in json.dumps(row)
+
+
 def test_known_live_account_is_separate_from_paper_and_no_pnl_is_invented():
     source = snapshot()
     before = deepcopy(source)

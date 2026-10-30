@@ -108,6 +108,9 @@ React UI → FastAPI（控制、查询、SSE、持久任务队列）
 
 详细规则、数据授权、部署与尚未完成事项见：
 
+- [V2 盘中退出规则与验证边界](docs/INTRADAY_EXITS.md)
+- [auto-trading-bot 策略融合评审](docs/EXTERNAL_STRATEGY_REVIEW.md)
+
 - [行情与研究限制](docs/DATA_AND_RESEARCH.md)
 - [短期行业相对反转策略与真实历史回测](docs/REVERSAL_RESEARCH.md)
 - [Alpaca 接入与验证指南](docs/ALPACA_SETUP.md)

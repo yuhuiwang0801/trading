@@ -12,13 +12,14 @@ import json
 from pathlib import Path
 
 from . import live_reversal as reversal
+from . import intraday_reversal
 from .strategy import DEFAULT_PARAMS, D
 
 ROOT = Path(__file__).resolve().parents[2]
 MASTER_PATH = ROOT / 'data/reversal/alpaca_sip_20261027_proxy200_v2/security_master.csv'
 IDENTITY_PATH = ROOT / 'data/reversal/v2_identity_review.json'
 MODE = 'strategy_managed'
-VERSION = 'strategy_managed_scope_v1'
+VERSION = 'strategy_managed_scope_v2'
 
 
 def fingerprint(value):
@@ -62,7 +63,10 @@ def policy_for(strategy_id):
                       max_issuer_weight=str(cfg['max_issuer_weight']),
                       max_industry_weight=str(cfg['max_industry_weight']),
                       max_positions=cfg['max_positions'], max_entries_per_day=cfg['max_entries_per_day'],
-                      buy_window='09:35–09:40 America/New_York', sell_window='09:35–regular close America/New_York')
+                      intraday_exit=intraday_reversal.rules(),
+                      sell_uses_buy_budget=False,
+                      buy_window='09:35–09:40 America/New_York',
+                      sell_window='09:30–regular close intraday; daily exits from 09:35 America/New_York')
     elif strategy_id == reversal.TREND_ID:
         policy.update(strategy_version='trend_breakout_v1', strategy_config_hash=None,
                       universe_mode='eligible_active_us_equities', universe_count=None, symbols=[],

@@ -329,6 +329,7 @@ export default function App() {
       SCAN_FAILED: ['巡检失败', 'Scan failed'], RECONCILIATION: ['账户核对', 'Account reconciled'],
       CANDIDATE_POOL_UPDATED: ['候选池更新', 'Shortlist updated'], CASH_SETTLED: ['资金结算', 'Cash settled'],
       FILL_APPLIED: ['成交入账', 'Fill recorded'], INTENT_PERSISTED: ['生成订单意图', 'Order intent created'],
+      INTRADAY_EXIT_TRIGGERED: ['触发盘中退出', 'Intraday exit triggered'],
       ORDER_SUBMISSION_STARTED: ['提交订单', 'Order submission started'], ORDER_SUBMISSION_RESULT: ['订单提交结果', 'Submission result'],
       CANCEL_REQUESTED: ['申请撤单', 'Cancellation requested'], CANCEL_RESPONSE: ['撤单结果', 'Cancellation result'],
       CANCEL_AWAITING_RECONCILIATION: ['撤单等待核对', 'Cancellation awaiting reconciliation'],

@@ -16,13 +16,13 @@ def strategies():
     path = config.ROOT / 'config/reversal_research_v2.json'
     v2 = json.loads(path.read_text())
     items = [
-        {'id': 'reversal_v2', 'name': 'V2 基本面过滤与反弹退出', 'version': v2['strategy_version'],
+        {'id': 'reversal_v2', 'name': 'V2 基本面过滤与盘中反弹退出', 'version': v2['strategy_version'] + '_intraday_v1',
          'config_hash': hashlib.sha256(path.read_bytes()).hexdigest(),
-         'description': '行业相对超跌、已披露基本面筛选、固定偏离修复80%退出。',
+         'description': '行业相对超跌、已披露基本面筛选；双源报价确认盘中偏离修复、止损和盈利回撤。',
          'parameters': {key: v2[key] for key in ['formation_sessions', 'min_raw_price', 'min_history_sessions',
                         'candidate_fraction', 'max_positions', 'max_entries_per_day', 'max_security_weight',
                         'max_industry_weight', 'max_daily_buy_weight', 'entry_filters', 'dynamic_exit']},
-         'execution_notice': '每日收盘后计算；下一交易日09:35–09:40 ET允许新买。退出于09:35后提交限价单，未成交继续按订单状态处理。研究日线开盘收益不等于实时成交收益。'}
+         'execution_notice': '收盘后选股，下一交易日09:35–09:40 ET允许新买；09:30至常规收盘检查盘中退出，日线退出09:35起执行。约30秒巡检并非逐笔行情，限价单不保证成交。历史报告仍为原日线V2，尚未验证新版盘中收益。'}
     ]
     for item in items:
         item['execution_policy'] = public_policy(policy_for(item['id']))

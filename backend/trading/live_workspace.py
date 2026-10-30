@@ -26,16 +26,22 @@ _NUMBERS = frozenset({'quantity', 'filled_quantity', 'limit_price', 'price', 'fe
     'spread_pct', 'timestamp_age_seconds', 'bid_at_age_seconds', 'ask_at_age_seconds',
     'bar_time_age_seconds', 'bid_feed_pct', 'ask_feed_pct', 'limit_robinhood_pct', 'signal_ask_pct',
     'signal_limit_pct', 'quote_max_age_seconds', 'bar_max_age_seconds', 'max_spread_pct',
-    'max_price_deviation_pct', 'limit_notional', 'max_order_amount', 'max_daily_added'})
+    'max_price_deviation_pct', 'limit_notional', 'max_order_amount', 'max_daily_added',
+    'intraday_peak_bid', 'confirmed_bid', 'cost_basis', 'price_return', 'peak_bid',
+    'trailing_level', 'relative_log_return'})
 _TIMES = frozenset({'checked_at', 'timestamp', 'created_at', 'updated_at', 'expires_at',
-    'signal_bar_time', 'bar_time', 'bid_at', 'ask_at'})
+    'signal_bar_time', 'bar_time', 'bid_at', 'ask_at', 'observed_at', 'exit_triggered_at',
+    'intraday_last_checked_at', 'oldest_quote_at'})
 _IDS = frozenset({'id', 'ref_id', 'intent_id', 'order_id', 'broker_order_id', 'approval_id', 'fill_id'})
-_CODES = frozenset({'status', 'state', 'side', 'reason', 'unsent_reason', 'quality', 'event', 'type'})
-_FLAGS = frozenset({'never_submitted', 'scope_matched', 'passed', 'has_traded', 'required', 'complete', 'armed'})
+_CODES = frozenset({'status', 'state', 'side', 'reason', 'unsent_reason', 'quality', 'event', 'type',
+    'exit_reason', 'intraday_status', 'intraday_reason', 'relative_blocker', 'version'})
+_FLAGS = frozenset({'never_submitted', 'scope_matched', 'passed', 'has_traded', 'required', 'complete', 'armed',
+    'exit_latched', 'trailing_active', 'intraday_trailing_active'})
 _COUNTS = frozenset({'configuration_revision', 'orders_sent', 'cancel_requests', 'max_positions',
-    'positions', 'orders', 'fills', 'count'})
+    'positions', 'orders', 'fills', 'count', 'peer_count'})
 _CONTAINERS = frozenset({'order', 'evidence', 'alpaca', 'robinhood', 'signal', 'deviations',
-    'thresholds', 'quote_check', 'readiness', 'configuration'})
+    'thresholds', 'quote_check', 'readiness', 'configuration', 'intraday_evidence',
+    'intraday_quote_check', 'trigger_quote_check'})
 
 
 def _dict(value):
@@ -154,7 +160,11 @@ def _positions(snapshot, known):
         else:
             management, unmanaged = 'partial', str(Decimal(quantity) - Decimal(local))
         managed = management in {'managed', 'partial'}
-        result.append({'id': symbol, 'symbol': symbol, 'quantity': quantity,
+        intraday = _public_detail({key: system.get(key) for key in (
+            'intraday_status', 'intraday_reason', 'intraday_peak_bid', 'intraday_trailing_active',
+            'intraday_last_checked_at', 'intraday_evidence', 'intraday_quote_check',
+            'exit_latched', 'exit_reason', 'exit_triggered_at')}) if managed else {}
+        result.append({**intraday, 'id': symbol, 'symbol': symbol, 'quantity': quantity,
             'available_quantity': _amount(row.get('available_quantity'), nonnegative=True),
             'sellable_quantity': _amount(row.get('available_quantity'), nonnegative=True),
             'average_price': _amount(row.get('average_price'), nonnegative=True),

@@ -4,6 +4,7 @@ from __future__ import annotations
 from decimal import Decimal
 from .calendar import as_utc, iso, market_state
 from .market import MarketDataError
+from .intraday_market import action_query_window, build_context, managed_positions, peer_quote_symbols
 
 
 def quote_frame(provider, packet, configuration, positions=(), intents=(), now=None):
@@ -13,19 +14,33 @@ def quote_frame(provider, packet, configuration, positions=(), intents=(), now=N
     allowed = set(configuration.get('symbols', []))
     candidates = [dict(c) for c in packet.get('candidates', []) if c.get('symbol') in allowed]
     active = {'FILLED', 'CANCELLED', 'REJECTED', 'EXPIRED', 'FAILED', 'PREVIEW_BLOCKED', 'ABANDONED'}
+    holdings = managed_positions(positions)
     symbols = sorted({c['symbol'] for c in candidates} |
                      {p['symbol'] for p in positions} |
-                     {i['symbol'] for i in intents if i.get('status') not in active})
+                     {i['symbol'] for i in intents if i.get('status') not in active} |
+                     peer_quote_symbols(packet, positions))
     frame = {'strategy_id': 'reversal_v2', 'source': 'alpaca', 'quality': 'valid',
              'timestamp': iso(clock), 'session_date': calendar['session_date'], 'market_open': calendar['is_open'],
              'calendar': calendar, 'candidates': candidates, 'quotes': {}, 'bars': {}, 'market_filter': True,
              'reversal_packet': packet, 'signal_packet': packet,
              'metadata': {'daily_signal_feed': 'sip', 'execution_quote_feed': provider.feed},
-             'reason': None}
+             'reason': None, 'intraday_context': {}}
     if not calendar['is_open'] or not symbols:
         return frame
+    actions, actions_checked, action_window = None, False, None
     try:
         assets = {row['symbol']: row for row in provider.assets() if row.get('symbol')}
+        # Corporate-action reads precede quotes so slow metadata lookups cannot
+        # silently age a valid trigger. A failed/unsupported action endpoint only
+        # disables new raw-price triggers, never the existing daily exit path.
+        if holdings:
+            action_symbols = sorted(set(holdings) | peer_quote_symbols(packet, positions))
+            action_window = action_query_window(positions, calendar['session_date'])
+            try:
+                actions = provider.corporate_actions(action_symbols, action_window['start'], action_window['end'])
+                actions_checked = isinstance(actions, list)
+            except Exception:
+                actions = None
         raw = provider.quotes(symbols)
         clock = fixed or as_utc()
         for symbol in symbols:
@@ -60,6 +75,8 @@ def quote_frame(provider, packet, configuration, positions=(), intents=(), now=N
     completed = fixed or as_utc()
     state = market_state(completed)
     frame.update(timestamp=iso(completed), received_at=iso(completed), calendar=state, market_open=state['is_open'])
+    frame['intraday_context'] = build_context(packet, positions, frame['quotes'], completed,
+        corporate_actions=actions, corporate_actions_checked=actions_checked, action_window=action_window)
     if state['session_date'] != frame['session_date']:
         frame.update(quality='unavailable', reason='session_changed_during_quotes')
     return frame

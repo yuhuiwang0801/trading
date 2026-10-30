@@ -1086,20 +1086,32 @@ class LiveExecutionService:
                             and (config.get('scope_mode') != live_policy.MODE or
                                  packet.get('metadata_hash') == config.get('universe_hash')) else [])
             position = reversal.update_position(position, observations, day)
+            if not position.get('exit_latched'):
+                position = self._update_intraday_position(
+                    db, position, packet, frame, config, settings, reference_now, started)
             self._save(db, 'live_positions', symbol, position)
             db.commit()
+            # Intraday protection starts at the regular open. The original
+            # completed-day signals retain their 09:35 execution convention.
+            intraday_exit = str(position.get('exit_reason', '')).startswith('INTRADAY_')
+            exit_now = reference_now + timedelta(seconds=time.monotonic() - started)
+            allowed_exit = (market_state(exit_now)['is_open'] if intraday_exit
+                            else reversal.exit_window(exit_now))
             if (not position.get('exit_latched') or day < position['exit_due_session']
-                    or not reversal.exit_window(now)):
+                    or not allowed_exit):
                 continue
             quote = frame.get('quotes', {}).get(symbol)
-            if validate_quote(quote, now, settings):
+            if validate_quote(quote, exit_now, settings):
                 continue
             intents = self._rows(db, 'live_intents')
             if any(i['symbol'] == symbol and i['status'] in ACTIVE for i in intents):
                 continue
             limit = limit_price_for('SELL', quote, settings)
+            # A buy allocation limit must never strand an appreciated share.
+            # SELL only reduces verified system ownership and remains bounded
+            # by the broker's available shares; all execution gates still apply.
             quantity = min(D(position['quantity']), D(broker_positions.get(symbol, {}).get('available_quantity', '0')),
-                           D(config['max_order_amount']) / limit).to_integral_value(rounding=ROUND_DOWN)
+                           D('1000000')).to_integral_value(rounding=ROUND_DOWN)
             if quantity < 1:
                 continue
             # A cancelled/partial exit may retry its remaining verified shares;
@@ -1108,6 +1120,9 @@ class LiveExecutionService:
                           i.get('evidence', {}).get('position_opened_at') == position['opened_at'] for i in intents)
             evidence = {'strategy_id': reversal.STRATEGY_ID, 'position_opened_at': position['opened_at'],
                         'exit_reason': position['exit_reason'], 'exit_signal_session': position.get('exit_signal_session')}
+            if intraday_exit:
+                evidence.update(intraday_evidence=position.get('intraday_evidence', {}),
+                                trigger_quote_check=position.get('intraday_quote_check', {}))
             result = self._execute(db, config, settings, {'symbol': symbol, 'side': 'SELL', 'quantity': quantity,
                                    'limit_price': limit}, f"reversal-exit:{symbol}:{position['opened_at']}:{attempt}",
                                    evidence, reference_now + timedelta(seconds=time.monotonic() - started), frame)
@@ -1224,6 +1239,62 @@ class LiveExecutionService:
             if self._get(db, 'blocks', []):
                 return self._scan_result(db, 'BLOCKED', now, sent, cancellations)
         return self._scan_result(db, 'SUCCESS', now, sent, cancellations)
+
+    def _update_intraday_position(self, db, position, packet, frame, config, settings, reference_now, started):
+        """Confirm the executable book before advancing any intraday peak/exit.
+
+        This is a read-only quote comparison, not an order or a broker preview.
+        A one-source spike cannot permanently latch an exit. _execute performs
+        its own preview and fresh cross-source check before any submission.
+        """
+        symbol = position['symbol']
+        contexts = frame.get('intraday_context')
+        context = contexts.get(symbol, {}) if isinstance(contexts, dict) else {}
+        if not isinstance(context, dict) or context.get('price_basis_valid') is not True:
+            return {**position, 'intraday_status': 'blocked',
+                    'intraday_reason': context.get('reason', 'intraday_price_basis_unavailable')
+                    if isinstance(context, dict) else 'intraday_price_basis_unavailable'}
+        checked = reference_now + timedelta(seconds=time.monotonic() - started)
+        quote = frame.get('quotes', {}).get(symbol)
+        if (not market_state(checked)['is_open'] or not self._may_write() or
+                self._get(db, 'blocks', []) or validate_quote(quote, checked, settings)):
+            return {**position, 'intraday_status': 'blocked', 'intraday_reason': 'intraday_quote_unavailable'}
+        test_order = {'symbol': symbol, 'side': 'SELL', 'quantity': '1',
+                      'limit_price': str(limit_price_for('SELL', quote, settings))}
+        try:
+            broker_quote = self.adapter.fresh_quote(symbol)
+        except Exception:
+            broker_quote = None
+        checked = reference_now + timedelta(seconds=time.monotonic() - started)
+        report = cross_quote_check(test_order, quote, broker_quote, checked, settings)
+        if (report['status'] != 'PASSED' or not market_state(checked)['is_open'] or
+                not self._may_write() or self._get(db, 'blocks', [])):
+            return {**position, 'intraday_status': 'blocked', 'intraday_reason': 'intraday_quote_unconfirmed',
+                    'intraday_quote_check': report}
+        # The lower of the two sellable bids cannot manufacture a profitable
+        # target from the more optimistic source. A loss trigger is conservative.
+        bid = min(D(quote['bid']), D(broker_quote['bid_price']))
+        decision_frame = frame
+        if (not isinstance(packet, dict) or packet.get('strategy_id') != reversal.STRATEGY_ID
+                or packet.get('quality') not in ('ready', 'valid', 'expired')
+                or packet.get('config_hash') != config.get('strategy_config_hash')
+                or (config.get('scope_mode') == live_policy.MODE
+                    and packet.get('metadata_hash') != config.get('universe_hash'))):
+            # A prior valid daily checkpoint does not authenticate this packet's
+            # peer basket. Preserve independently verified cash-price protection
+            # but never combine that checkpoint with another policy/universe.
+            decision_frame = {**frame, 'intraday_context': {
+                **contexts, symbol: {**context, 'relative_eligible': False,
+                                    'reason': 'intraday_packet_identity_mismatch'}}}
+        from . import intraday_reversal
+        updated = intraday_reversal.update_position(
+            position, packet, decision_frame, checked, confirmed_bid=bid)
+        updated['intraday_quote_check'] = report
+        if updated.get('exit_latched') and not position.get('exit_latched'):
+            self._audit(db, 'INTRADAY_EXIT_TRIGGERED', {
+                'symbol': symbol, 'reason': updated.get('exit_reason'),
+                'evidence': updated.get('intraday_evidence', {}), 'quote_check': report}, checked)
+        return updated
 
     def _scan_result(self, db, status, now, sent=0, cancellations=0):
         result = {'status': status, 'checked_at': stamp(now), 'orders_sent': sent, 'cancel_requests': cancellations,
